@@ -9,4 +9,4 @@ CREATE TABLE Lieferantenstamm_zu_Materialstamm
     LieferantenID INT NOT NULL,
     ObergruppeID INT NOT NULL,
     Primary Key (LieferantenID,LieferantenID,ObergruppeID)
-)
+);

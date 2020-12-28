@@ -17,4 +17,4 @@ CREATE TABLE Hilfsstoffe
     Primary Key (UntergruppeID,ObergruppeID)
 
 
-)
+);

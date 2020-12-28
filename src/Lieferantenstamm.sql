@@ -21,6 +21,11 @@ CREATE TABLE Lieferantenstamm
     PRIMARY KEY (LieferantenID)
 );
 
+ALTER TABLE Lieferantenstamm
+    ADD CONSTRAINT FOREIGN KEY(LieferantenID) REFERENCES Personalstamm(PersonalID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
 
 
 

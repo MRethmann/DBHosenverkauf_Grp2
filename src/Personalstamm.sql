@@ -15,8 +15,17 @@ CREATE TABLE Personalstamm
     Ort VARCHAR(255),
     PLZ CHAR(5),
     Ländercode VARCHAR(3),
+    MTag BOOLEAN,
+    Vorgesetzter CHAR(10),
+    VTag BOOLEAN,
+    Firmenname VARCHAR(255),
     PRIMARY KEY (PersonalID)
 );
+
+ALTER TABLE Personalstamm
+    ADD CONSTRAINT FOREIGN KEY(Vorgesetzter) REFERENCES Personalstamm(PersonalID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
 
 
 

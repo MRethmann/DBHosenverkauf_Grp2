@@ -6,7 +6,7 @@ CREATE TABLE Hose
     EU_Groeße    VARCHAR(4),
     Schrittlänge    Integer,
     Brundumfang Integer,
-    Gesäßweite  Integer,8
+    Gesäßweite  Integer,
 
 
 

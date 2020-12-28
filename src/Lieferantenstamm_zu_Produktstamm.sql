@@ -11,3 +11,4 @@ CREATE TABLE Lieferanten_zu_Produktstamm
     ProduktID CHAR(10) NOT NULL,
     PRIMARY KEY (LieferantenID, ProduktID)
 );
+//fertig

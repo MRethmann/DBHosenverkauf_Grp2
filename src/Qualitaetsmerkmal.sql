@@ -8,5 +8,5 @@ CREATE TABLE Qualitaetsmerkmal
     MerkmalID INT NOT NULL ,
     GOTS boolean,
     Vegan boolean,
-    Primary Key (MarkmalID),
+    Primary Key (MerkmalID)
 );

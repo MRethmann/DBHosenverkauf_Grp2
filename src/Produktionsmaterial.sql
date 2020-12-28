@@ -19,3 +19,12 @@ CREATE TABLE Produktionsmaterial
 
 
 );
+ALTER TABLE Produktionsmaterial
+    ADD CONSTRAINT FOREIGN KEY(MerkmalID) REFERENCES Qualitaetsmerkmal(MerkmalID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Produktionsmaterial
+    ADD CONSTRAINT FOREIGN KEY(FarbID) REFERENCES Farbe(FarbID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

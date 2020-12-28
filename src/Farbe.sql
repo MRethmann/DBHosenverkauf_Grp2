@@ -7,5 +7,5 @@ CREATE TABLE Farbe
 (
     FarbID INT NOT NULL ,
     Farbe VARCHAR (255),
-    Primary Key (FarbID),
+    Primary Key (FarbID)
 )

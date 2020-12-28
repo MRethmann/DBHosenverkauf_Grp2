@@ -9,4 +9,4 @@ CREATE TABLE Qualitaetsmerkmal
     GOTS boolean,
     Vegan boolean,
     Primary Key (MarkmalID),
-)
+);

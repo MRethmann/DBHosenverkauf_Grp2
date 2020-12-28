@@ -18,4 +18,4 @@ CREATE TABLE Produktionsmaterial
     Primary Key (UntergruppeID,ObergruppeID)
 
 
-)
+);

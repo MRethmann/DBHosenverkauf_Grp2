@@ -13,4 +13,23 @@ CREATE TABLE Bestellposition(
     FaNR Integer,
     Primary key(KundenID , BestellungsID)
 );
-//fertig
+
+ALTER TABLE Bestellposition
+    ADD CONSTRAINT FOREIGN KEY(BestellungsID) REFERENCES Bestellung(BestellungsID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Bestellposition
+    ADD CONSTRAINT FOREIGN KEY(KundenID) REFERENCES Kundenstamm(KundenID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Bestellposition
+    ADD CONSTRAINT FOREIGN KEY(FaNR) REFERENCES Fertigungsauftrag(FaNR)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Bestellposition
+    ADD CONSTRAINT FOREIGN KEY(ProduktID) REFERENCES Produktstamm(ProduktID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

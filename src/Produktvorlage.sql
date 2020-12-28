@@ -14,3 +14,28 @@ CREATE TABLE Produktvorlage
     ObergruppenID Integer,
     PRIMARY KEY (ProduktID)
 );
+
+ALTER TABLE Produktvorlage
+    ADD CONSTRAINT FOREIGN KEY(ProduktID) REFERENCES Produktstamm(ProduktID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Produktvorlage
+    ADD CONSTRAINT FOREIGN KEY(UntergruppenID) REFERENCES Produktionsmaterial(UntergruppenID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Produktvorlage
+    ADD CONSTRAINT FOREIGN KEY(ObergruppenID) REFERENCES Produktionsmaterial(ObergruppenID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Produktvorlage
+    ADD CONSTRAINT FOREIGN KEY(UntergruppenID) REFERENCES Hilfsstoffe(UntergruppenID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Produktvorlage
+    ADD CONSTRAINT FOREIGN KEY(ObergruppenID) REFERENCES Hilfsstoffe(ObergruppenID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

@@ -7,3 +7,4 @@ CREATE TABLE Mitarbeiter_zu_Fertigungsauftrag
     PersonalID CHAR(10),
     PRIMARY KEY (PersonalID , FaNr)
 );
+//fertig

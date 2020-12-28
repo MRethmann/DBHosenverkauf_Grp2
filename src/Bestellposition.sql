@@ -13,3 +13,4 @@ CREATE TABLE Bestellposition(
     FaNR Integer,
     Primary key(KundenID , BestellungsID)
 );
+//fertig

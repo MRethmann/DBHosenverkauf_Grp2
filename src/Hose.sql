@@ -12,3 +12,4 @@ CREATE TABLE Hose
 
     Primary key (ProduktID)
 );
+//fertig

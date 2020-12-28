@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS Rechnung;
 CREATE TABLE Rechnung
 (
     RechnungsID Auto_Increment,
-    Kosten DECIMAL,
+    Kosten DECIMAL (9,2),
     Zahlungsfrist DATE,
     VaNr INTEGER,
     Abgeschlossen BOOLEAN,

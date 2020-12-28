@@ -14,4 +14,8 @@ CREATE TABLE Produktstamm
 
     Primary key (ProduktID)
 );
-//fertig
+
+ALTER TABLE Produktstamm
+    ADD CONSTRAINT FOREIGN KEY(FarbID) REFERENCES Farbe(FarbID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

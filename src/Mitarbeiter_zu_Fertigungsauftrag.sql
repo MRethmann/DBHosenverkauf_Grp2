@@ -7,4 +7,9 @@ CREATE TABLE Mitarbeiter_zu_Fertigungsauftrag
     PersonalID CHAR(10),
     PRIMARY KEY (PersonalID , FaNr)
 );
-//fertig
+
+
+ALTER TABLE Mitarbeiter_zu_Fertigungsauftrag
+    ADD CONSTRAINT FOREIGN KEY(FaNr) REFERENCES FERTIGUNGSAUFTRAG(FaNR)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

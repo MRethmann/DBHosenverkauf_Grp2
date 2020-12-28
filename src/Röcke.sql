@@ -12,4 +12,7 @@ CREATE TABLE Roecke
 
     Primary key (ProduktID)
     );
-//fertig
+ALTER TABLE Roecke
+    ADD CONSTRAINT FOREIGN KEY(ProduktID) REFERENCES Produktstamm(ProduktID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

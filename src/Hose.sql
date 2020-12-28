@@ -12,4 +12,8 @@ CREATE TABLE Hose
 
     Primary key (ProduktID)
 );
-//fertig
+
+ALTER TABLE Hose
+    ADD CONSTRAINT FOREIGN KEY(ProduktID) REFERENCES Produktstamm(ProduktID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

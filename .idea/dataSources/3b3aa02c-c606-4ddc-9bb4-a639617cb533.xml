@@ -1508,304 +1508,310 @@ FaNr</ColNames>
       <RefColNames>FaNr</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="450" parent="348" name="PersonalID">
+    <foreign-key id="450" parent="347" name="mitarbeiter_zu_fertigungsauftrag_ibfk_2">
+      <ColNames>PersonalID</ColNames>
+      <RefTableName>personalstamm</RefTableName>
+      <RefColNames>PersonalID</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="451" parent="348" name="PersonalID">
       <Position>1</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="451" parent="348" name="Nachname">
+    <column id="452" parent="348" name="Nachname">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="452" parent="348" name="Vorname">
+    <column id="453" parent="348" name="Vorname">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="453" parent="348" name="Straße">
+    <column id="454" parent="348" name="Straße">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="454" parent="348" name="Hausnummer">
+    <column id="455" parent="348" name="Hausnummer">
       <Position>5</Position>
       <DataType>varchar(5)|0s</DataType>
     </column>
-    <column id="455" parent="348" name="Ort">
+    <column id="456" parent="348" name="Ort">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="456" parent="348" name="PLZ">
+    <column id="457" parent="348" name="PLZ">
       <Position>7</Position>
       <DataType>char(5)|0s</DataType>
     </column>
-    <column id="457" parent="348" name="Ländercode">
+    <column id="458" parent="348" name="Ländercode">
       <Position>8</Position>
       <DataType>varchar(3)|0s</DataType>
     </column>
-    <column id="458" parent="348" name="MTag">
+    <column id="459" parent="348" name="MTag">
       <Position>9</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <column id="459" parent="348" name="Vorgesetzter">
+    <column id="460" parent="348" name="Vorgesetzter">
       <Position>10</Position>
       <DataType>char(10)|0s</DataType>
     </column>
-    <column id="460" parent="348" name="VTag">
+    <column id="461" parent="348" name="VTag">
       <Position>11</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <column id="461" parent="348" name="Firmenname">
+    <column id="462" parent="348" name="Firmenname">
       <Position>12</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <index id="462" parent="348" name="Vorgesetzter">
+    <index id="463" parent="348" name="Vorgesetzter">
       <ColNames>Vorgesetzter</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="463" parent="348" name="PRIMARY">
+    <key id="464" parent="348" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>PersonalID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="464" parent="348" name="personalstamm_ibfk_1">
+    <foreign-key id="465" parent="348" name="personalstamm_ibfk_1">
       <ColNames>Vorgesetzter</ColNames>
       <RefTableName>personalstamm</RefTableName>
       <RefColNames>PersonalID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="465" parent="349" name="PersonalID">
+    <column id="466" parent="349" name="PersonalID">
       <Position>1</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="466" parent="349" name="Vollmacht">
+    <column id="467" parent="349" name="Vollmacht">
       <Position>2</Position>
       <DataType>varchar(10)|0s</DataType>
     </column>
-    <key id="467" parent="349" name="PRIMARY">
+    <key id="468" parent="349" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>PersonalID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="468" parent="349" name="personalstamm_buchhaltung_ibfk_1">
+    <foreign-key id="469" parent="349" name="personalstamm_buchhaltung_ibfk_1">
       <ColNames>PersonalID</ColNames>
       <RefTableName>personalstamm</RefTableName>
       <RefColNames>PersonalID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="469" parent="350" name="PersonalID">
+    <column id="470" parent="350" name="PersonalID">
       <Position>1</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="470" parent="350" name="Schicht">
+    <column id="471" parent="350" name="Schicht">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <column id="471" parent="350" name="Maschinenkenntnisse">
+    <column id="472" parent="350" name="Maschinenkenntnisse">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="472" parent="350" name="PRIMARY">
+    <key id="473" parent="350" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>PersonalID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="473" parent="350" name="personalstamm_produktion_ibfk_1">
+    <foreign-key id="474" parent="350" name="personalstamm_produktion_ibfk_1">
       <ColNames>PersonalID</ColNames>
       <RefTableName>personalstamm</RefTableName>
       <RefColNames>PersonalID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="474" parent="351" name="PersonalID">
+    <column id="475" parent="351" name="PersonalID">
       <Position>1</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="475" parent="351" name="Staplerführerschein">
+    <column id="476" parent="351" name="Staplerführerschein">
       <Position>2</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <key id="476" parent="351" name="PRIMARY">
+    <key id="477" parent="351" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>PersonalID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="477" parent="351" name="personalstamm_versand_ibfk_1">
+    <foreign-key id="478" parent="351" name="personalstamm_versand_ibfk_1">
       <ColNames>PersonalID</ColNames>
       <RefTableName>personalstamm</RefTableName>
       <RefColNames>PersonalID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="478" parent="352" name="KundenID">
+    <column id="479" parent="352" name="KundenID">
       <Position>1</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="479" parent="352" name="Vorname">
+    <column id="480" parent="352" name="Vorname">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="480" parent="352" name="Nachname">
+    <column id="481" parent="352" name="Nachname">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="481" parent="352" name="PRIMARY">
+    <key id="482" parent="352" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>KundenID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="482" parent="352" name="privater_kunde_ibfk_1">
+    <foreign-key id="483" parent="352" name="privater_kunde_ibfk_1">
       <ColNames>KundenID</ColNames>
       <RefTableName>kundenstamm</RefTableName>
       <RefColNames>KundenID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="483" parent="353" name="UntergruppeID">
+    <column id="484" parent="353" name="UntergruppeID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="484" parent="353" name="ObergruppeID">
+    <column id="485" parent="353" name="ObergruppeID">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="485" parent="353" name="Menge">
+    <column id="486" parent="353" name="Menge">
       <Position>3</Position>
       <DataType>decimal(9,2 digit)|0s</DataType>
     </column>
-    <column id="486" parent="353" name="Ursprungsland">
+    <column id="487" parent="353" name="Ursprungsland">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="487" parent="353" name="Bezeichnung_Obergruppe">
+    <column id="488" parent="353" name="Bezeichnung_Obergruppe">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="488" parent="353" name="Bezeichnung_Untergruppe">
+    <column id="489" parent="353" name="Bezeichnung_Untergruppe">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="489" parent="353" name="FarbID">
+    <column id="490" parent="353" name="FarbID">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="490" parent="353" name="MerkmalID">
+    <column id="491" parent="353" name="MerkmalID">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="491" parent="353" name="FarbID">
+    <index id="492" parent="353" name="FarbID">
       <ColNames>FarbID</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="492" parent="353" name="MerkmalID">
+    <index id="493" parent="353" name="MerkmalID">
       <ColNames>MerkmalID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="493" parent="353" name="PRIMARY">
+    <key id="494" parent="353" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>UntergruppeID
 ObergruppeID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="494" parent="353" name="produktionsmaterial_ibfk_2">
+    <foreign-key id="495" parent="353" name="produktionsmaterial_ibfk_2">
       <ColNames>FarbID</ColNames>
       <RefTableName>farbe</RefTableName>
       <RefColNames>FarbID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="495" parent="353" name="produktionsmaterial_ibfk_1">
+    <foreign-key id="496" parent="353" name="produktionsmaterial_ibfk_1">
       <ColNames>MerkmalID</ColNames>
       <RefTableName>qualitaetsmerkmal</RefTableName>
       <RefColNames>MerkmalID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="496" parent="354" name="ProduktID">
+    <column id="497" parent="354" name="ProduktID">
       <Position>1</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="497" parent="354" name="2te_Wahl">
+    <column id="498" parent="354" name="2te_Wahl">
       <Position>2</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <column id="498" parent="354" name="Saison">
+    <column id="499" parent="354" name="Saison">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="499" parent="354" name="Bezeichnung">
+    <column id="500" parent="354" name="Bezeichnung">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="500" parent="354" name="Beschreibung">
+    <column id="501" parent="354" name="Beschreibung">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="501" parent="354" name="Menge">
+    <column id="502" parent="354" name="Menge">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="502" parent="354" name="Preis">
+    <column id="503" parent="354" name="Preis">
       <Position>7</Position>
       <DataType>decimal(9,2 digit)|0s</DataType>
     </column>
-    <column id="503" parent="354" name="FarbID">
+    <column id="504" parent="354" name="FarbID">
       <Position>8</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="504" parent="354" name="FarbID">
+    <index id="505" parent="354" name="FarbID">
       <ColNames>FarbID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="505" parent="354" name="PRIMARY">
+    <key id="506" parent="354" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ProduktID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="506" parent="354" name="produktstamm_ibfk_1">
+    <foreign-key id="507" parent="354" name="produktstamm_ibfk_1">
       <ColNames>FarbID</ColNames>
       <RefTableName>farbe</RefTableName>
       <RefColNames>FarbID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="507" parent="355" name="ProduktID">
+    <column id="508" parent="355" name="ProduktID">
       <Position>1</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="508" parent="355" name="Verbrauchsmenge">
+    <column id="509" parent="355" name="Verbrauchsmenge">
       <Position>2</Position>
       <DataType>decimal(9,2 digit)|0s</DataType>
     </column>
-    <column id="509" parent="355" name="Materialkosten">
+    <column id="510" parent="355" name="Materialkosten">
       <Position>3</Position>
       <DataType>decimal(9,2 digit)|0s</DataType>
     </column>
-    <column id="510" parent="355" name="UntergruppeID">
+    <column id="511" parent="355" name="UntergruppeID">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="511" parent="355" name="ObergruppeID">
+    <column id="512" parent="355" name="ObergruppeID">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <index id="512" parent="355" name="UntergruppeID">
+    <index id="513" parent="355" name="UntergruppeID">
       <ColNames>UntergruppeID
 ObergruppeID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="513" parent="355" name="PRIMARY">
+    <key id="514" parent="355" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ProduktID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="514" parent="355" name="produktvorlage_ibfk_1">
+    <foreign-key id="515" parent="355" name="produktvorlage_ibfk_1">
       <ColNames>ProduktID</ColNames>
       <RefTableName>produktstamm</RefTableName>
       <RefColNames>ProduktID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="515" parent="355" name="produktvorlage_ibfk_2">
+    <foreign-key id="516" parent="355" name="produktvorlage_ibfk_2">
       <ColNames>UntergruppeID
 ObergruppeID</ColNames>
       <RefTableName>produktionsmaterial</RefTableName>
@@ -1813,7 +1819,7 @@ ObergruppeID</ColNames>
 ObergruppeID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="516" parent="355" name="produktvorlage_ibfk_3">
+    <foreign-key id="517" parent="355" name="produktvorlage_ibfk_3">
       <ColNames>UntergruppeID
 ObergruppeID</ColNames>
       <RefTableName>hilfsstoffe</RefTableName>
@@ -1821,112 +1827,112 @@ ObergruppeID</ColNames>
 ObergruppeID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="517" parent="356" name="MerkmalID">
+    <column id="518" parent="356" name="MerkmalID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="518" parent="356" name="GOTS">
+    <column id="519" parent="356" name="GOTS">
       <Position>2</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <column id="519" parent="356" name="Vegan">
+    <column id="520" parent="356" name="Vegan">
       <Position>3</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <key id="520" parent="356" name="PRIMARY">
+    <key id="521" parent="356" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>MerkmalID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="521" parent="357" name="RechnungsID">
+    <column id="522" parent="357" name="RechnungsID">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="522" parent="357" name="Kosten">
+    <column id="523" parent="357" name="Kosten">
       <Position>2</Position>
       <DataType>decimal(9,2 digit)|0s</DataType>
     </column>
-    <column id="523" parent="357" name="Zahlungsfrist">
+    <column id="524" parent="357" name="Zahlungsfrist">
       <Position>3</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="524" parent="357" name="VaNr">
+    <column id="525" parent="357" name="VaNr">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="525" parent="357" name="Abgeschlossen">
+    <column id="526" parent="357" name="Abgeschlossen">
       <Position>5</Position>
       <DataType>tinyint(1)|0s</DataType>
     </column>
-    <key id="526" parent="357" name="PRIMARY">
+    <key id="527" parent="357" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>RechnungsID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="527" parent="358" name="ProduktID">
+    <column id="528" parent="358" name="ProduktID">
       <Position>1</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="528" parent="358" name="EU_Groeße">
+    <column id="529" parent="358" name="EU_Groeße">
       <Position>2</Position>
       <DataType>varchar(4)|0s</DataType>
     </column>
-    <column id="529" parent="358" name="Laenge">
+    <column id="530" parent="358" name="Laenge">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="530" parent="358" name="Brundumfang">
+    <column id="531" parent="358" name="Brundumfang">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="531" parent="358" name="Weite">
+    <column id="532" parent="358" name="Weite">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <key id="532" parent="358" name="PRIMARY">
+    <key id="533" parent="358" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ProduktID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="533" parent="358" name="roecke_ibfk_1">
+    <foreign-key id="534" parent="358" name="roecke_ibfk_1">
       <ColNames>ProduktID</ColNames>
       <RefTableName>produktstamm</RefTableName>
       <RefColNames>ProduktID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="534" parent="359" name="ReferenzID">
+    <column id="535" parent="359" name="ReferenzID">
       <Position>1</Position>
       <DataType>char(10)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="535" parent="359" name="Telefonnummer">
+    <column id="536" parent="359" name="Telefonnummer">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="536" parent="359" name="PRIMARY">
+    <key id="537" parent="359" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ReferenzID
 Telefonnummer</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="537" parent="359" name="telefonnummern_ibfk_1">
+    <foreign-key id="538" parent="359" name="telefonnummern_ibfk_1">
       <ColNames>ReferenzID</ColNames>
       <RefTableName>personalstamm</RefTableName>
       <RefColNames>PersonalID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="538" parent="359" name="telefonnummern_ibfk_2">
+    <foreign-key id="539" parent="359" name="telefonnummern_ibfk_2">
       <ColNames>ReferenzID</ColNames>
       <RefTableName>lieferantenstamm</RefTableName>
       <RefColNames>LieferantenID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="539" parent="359" name="telefonnummern_ibfk_3">
+    <foreign-key id="540" parent="359" name="telefonnummern_ibfk_3">
       <ColNames>ReferenzID</ColNames>
       <RefTableName>kundenstamm</RefTableName>
       <RefColNames>KundenID</RefColNames>

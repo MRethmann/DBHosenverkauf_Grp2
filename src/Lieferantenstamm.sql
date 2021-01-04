@@ -1,6 +1,6 @@
 USE hosenfabrik;
 
-DROP TABLE IF EXISTS Personalstamm;
+DROP TABLE IF EXISTS Lieferantenstamm;
 
 CREATE TABLE Lieferantenstamm
 (

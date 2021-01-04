@@ -2,9 +2,6 @@ USE hosenfabrik;
 
 DROP TABLE IF EXISTS Personalstamm_Produktion;
 
-show fields from Personalstamm_Produktion;
-
-DROP TABLE IF EXISTS Personalstamm_Produktion;
 CREATE TABLE Personalstamm_Produktion
 (
     PersonalID CHAR(10) NOT NULL,

@@ -2,9 +2,6 @@ USE hosenfabrik;
 
 DROP TABLE IF EXISTS Personalstamm_Buchhaltung;
 
-show fields from Personalstamm_Buchhaltung;
-
-DROP TABLE IF EXISTS Personalstamm_Buchhaltung;
 CREATE TABLE Personalstamm_Buchhaltung
 (
     PersonalID CHAR(10) NOT NULL,

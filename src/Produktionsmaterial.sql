@@ -2,9 +2,6 @@ USE hosenfabrik;
 
 DROP TABLE IF EXISTS Produktionsmaterial;
 
-show fields from Produktionsmaterial;
-
-DROP TABLE IF EXISTS Produktionsmaterial;
 CREATE TABLE Produktionsmaterial
 (
     UntergruppeID INT NOT NULL ,

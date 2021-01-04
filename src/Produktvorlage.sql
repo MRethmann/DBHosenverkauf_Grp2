@@ -2,16 +2,13 @@ USE hosenfabrik;
 
 DROP TABLE IF EXISTS Produktvorlage;
 
-show fields from Produktvorlage;
-
-DROP TABLE IF EXISTS Produktvorlage;
 CREATE TABLE Produktvorlage
 (
     ProduktID CHAR(10) NOT NULL,
     Verbrauchsmenge DECIMAL(9,2),
     Materialkosten DECIMAL(9,2),
-    UntergruppenID Integer,
-    ObergruppenID Integer,
+    UntergruppeID Integer,
+    ObergruppeID Integer,
     PRIMARY KEY (ProduktID)
 );
 
@@ -21,21 +18,12 @@ ALTER TABLE Produktvorlage
         ON UPDATE CASCADE;
 
 ALTER TABLE Produktvorlage
-    ADD CONSTRAINT FOREIGN KEY(UntergruppenID) REFERENCES Produktionsmaterial(UntergruppenID)
+    ADD CONSTRAINT FOREIGN KEY(UntergruppeID,ObergruppeID) REFERENCES Produktionsmaterial(UntergruppeID,ObergruppeID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
 ALTER TABLE Produktvorlage
-    ADD CONSTRAINT FOREIGN KEY(ObergruppenID) REFERENCES Produktionsmaterial(ObergruppenID)
+    ADD CONSTRAINT FOREIGN KEY(UntergruppeID,ObergruppeID) REFERENCES Hilfsstoffe(UntergruppeID,ObergruppeID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Produktvorlage
-    ADD CONSTRAINT FOREIGN KEY(UntergruppenID) REFERENCES Hilfsstoffe(UntergruppenID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
-
-ALTER TABLE Produktvorlage
-    ADD CONSTRAINT FOREIGN KEY(ObergruppenID) REFERENCES Hilfsstoffe(ObergruppenID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;

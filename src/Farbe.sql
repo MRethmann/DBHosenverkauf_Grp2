@@ -1,8 +1,6 @@
 USE hosenfabrik;
 
 DROP TABLE IF EXISTS Farbe;
-show fields from Farbe;
-DROP TABLE IF EXISTS Farbe;
 CREATE TABLE Farbe
 (
     FarbID INT NOT NULL ,

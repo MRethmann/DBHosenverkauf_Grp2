@@ -1,13 +1,8 @@
-USE Hosenfabrik;
-
-DROP TABLE IF EXISTS Rechnung;
-
-show fields from Rechnung;
-
+USE hosenfabrik;
 DROP TABLE IF EXISTS Rechnung;
 CREATE TABLE Rechnung
 (
-    RechnungsID Auto_Increment,
+    RechnungsID Integer Auto_Increment,
     Kosten DECIMAL (9,2),
     Zahlungsfrist DATE,
     VaNr INTEGER,

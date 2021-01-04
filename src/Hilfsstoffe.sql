@@ -2,9 +2,6 @@ USE hosenfabrik;
 
 DROP TABLE IF EXISTS Hilfsstoffe;
 
-show fields from Hilfsstoffe;
-
-DROP TABLE IF EXISTS Hilfsstoffe;
 CREATE TABLE Hilfsstoffe
 (
     UntergruppeID INT NOT NULL ,

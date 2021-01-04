@@ -5,7 +5,7 @@ CREATE TABLE Hose
     ProduktID      CHAR(10),
     EU_Groeße    VARCHAR(4),
     Schrittlänge    Integer,
-    Brundumfang Integer,
+    Bundumfang Integer,
     Gesäßweite  Integer,
 
 

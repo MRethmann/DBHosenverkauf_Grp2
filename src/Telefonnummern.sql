@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS Telefonnummern
     PRIMARY KEY (ReferenzID, Telefonnummer)
 );
 
+# Muss noch ausgeführt werden
 ALTER TABLE Telefonnummern
     ADD CONSTRAINT FOREIGN KEY(ReferenzID) REFERENCES Personalstamm(PersonalID)
         ON DELETE RESTRICT

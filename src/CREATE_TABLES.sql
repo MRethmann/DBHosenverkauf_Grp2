@@ -120,8 +120,9 @@ DROP TABLE IF EXISTS Lieferantenstamm_zu_Materialstamm;
 CREATE TABLE Lieferantenstamm_zu_Materialstamm
 (
     LieferantenID CHAR(10) NOT NULL ,
-    UntergruppeID INT NOT NULL,
     ObergruppeID INT NOT NULL,
+    UntergruppeID INT NOT NULL,
+
     Primary Key (LieferantenID,UntergruppeID,ObergruppeID)
 );
 DROP TABLE IF EXISTS Lieferanten_zu_Produktstamm;
@@ -268,7 +269,10 @@ CREATE TABLE Roecke
 DROP TABLE IF EXISTS Telefonnummern;
 CREATE TABLE IF NOT EXISTS Telefonnummern
 (
-    ReferenzID CHAR(10) NOT NULL,
+    ReferenzKunde CHAR(10),
+    ReferenzPersonal CHAR(10),
+    ReferenzLieferant CHAR(10),
+    TelefonnummerID Integer auto_increment NOT NULL,
     Telefonnummer VARCHAR(20),
-    PRIMARY KEY (ReferenzID, Telefonnummer)
+    PRIMARY KEY (TelefonnummerID, Telefonnummer)
 );

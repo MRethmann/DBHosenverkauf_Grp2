@@ -6,6 +6,7 @@ CREATE TABLE Lieferanten_zu_Produktstamm
 (
     LieferantenID CHAR(10) NOT NULL,
     ProduktID CHAR(10) NOT NULL,
+    Menge DECIMAL(9, 2),
     PRIMARY KEY (LieferantenID, ProduktID)
 );
 

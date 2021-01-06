@@ -122,6 +122,7 @@ CREATE TABLE Lieferantenstamm_zu_Materialstamm
     LieferantenID CHAR(10) NOT NULL ,
     ObergruppeID INT NOT NULL,
     UntergruppeID INT NOT NULL,
+    Menge DECIMAL(9,2),
 
     Primary Key (LieferantenID,UntergruppeID,ObergruppeID)
 );
@@ -131,6 +132,7 @@ CREATE TABLE Lieferanten_zu_Produktstamm
 (
     LieferantenID CHAR(10) NOT NULL,
     ProduktID CHAR(10) NOT NULL,
+    Menge DECIMAL(9, 2),
     PRIMARY KEY (LieferantenID, ProduktID)
 );
 DROP TABLE IF EXISTS Mitarbeiter_zu_Fertigungsauftrag;

@@ -22,23 +22,23 @@ INSERT INTO farbe(farbid, farbe) VALUES
 (01, 'Anthrazit'),
 (04, 'Marine');
 
+INSERT INTO produktstamm(ProduktID, `2te_Wahl`, Saison, Bezeichnung, Beschreibung, Menge, Preis, FarbID) VALUE
+    ('1183', false, 'FrSo', 'Bettina', 'Damenhose mit Komforttaille', 30, 89.99, 04);
+
 INSERT INTO hose(ProduktID, EU_Groeße, Schrittlänge, Bundumfang, Gesäßweite) VALUE
 ('1183', '36', '34','91', '96');
 
-INSERT INTO produktstamm(ProduktID, `2te_Wahl`, Saison, Bezeichnung, Beschreibung, Menge, Preis, FarbID) VALUE
-('1183', false, 'FrSo', 'Bettina', 'Damenhose mit Komforttaille', 30, 89.99, 04);
-
-INSERT INTO hilfsstoffe VALUE
+INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe) VALUE
 (60, 15, 01, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 120');
 
 INSERT INTO qualitaetsmerkmal(MerkmalID, GOTS, Vegan) VALUE
 (1, true, false);
 
 #TODO: Noch überarbeiten
-INSERT INTO produktionsmaterial VALUE
+INSERT INTO produktionsmaterial(ObergruppeID, UntergruppeID, FarbID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe, MerkmalID) VALUE
 (60, 15, 01, 2000, 'Nordrhein-Westfalen', 'Stoff', '97% Baumwolle 3% Elasthan', 1);
 
-INSERT INTO produktvorlage VALUE
+INSERT INTO produktvorlage(ProduktID, ObergruppeID, UntergruppeID, Verbrauchsmenge, Materialkosten) VALUE
 ('1183',60, 15, 150, 0.09);
 
 #Produktbestandteile Aufrufen
@@ -55,4 +55,5 @@ INSERT INTO lieferantenstamm(LieferantenID, Firmenname, Ländercode, Straße, Ha
                              Ort, PLZ, Exportflag, Ausfuhrmenge, Importflag, Einfuhrmenge) VALUE
 ('L1234', 'Muster GmbH', 'DEU', 'Musterstraße', '1b', 'Haramburg', '12345', true, 10000, false, null);
 
-
+INSERT INTO lieferanten_zu_produktstamm(LieferantenID, ProduktID) VALUE
+('L1234', '1183');

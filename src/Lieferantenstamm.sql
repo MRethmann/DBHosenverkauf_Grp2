@@ -23,11 +23,5 @@ ALTER TABLE Lieferantenstamm
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Lieferantenstamm
-    ADD CONSTRAINT FOREIGN KEY(LieferantenID) REFERENCES Telefonnummern(ReferenzID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
-
-
 
 

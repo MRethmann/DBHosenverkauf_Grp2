@@ -24,11 +24,6 @@ ALTER TABLE Personalstamm
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Personalstamm
-    ADD CONSTRAINT FOREIGN KEY(PersonalID) REFERENCES Telefonnummern(ReferenzID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
-
 
 
 

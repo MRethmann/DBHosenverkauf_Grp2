@@ -35,20 +35,11 @@ ALTER TABLE Hose
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Kundenstamm
-    ADD CONSTRAINT FOREIGN KEY(KundenID) REFERENCES Telefonnummern(ReferenzID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
-
 ALTER TABLE Lieferantenstamm
     ADD CONSTRAINT FOREIGN KEY(LieferantenID) REFERENCES Personalstamm(PersonalID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Lieferantenstamm
-    ADD CONSTRAINT FOREIGN KEY(LieferantenID) REFERENCES Telefonnummern(ReferenzID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
 
 ALTER TABLE Lieferantenstamm_zu_Materialstamm
     ADD CONSTRAINT FOREIGN KEY(LieferantenID) REFERENCES Lieferantenstamm (LieferantenID)
@@ -88,10 +79,6 @@ ALTER TABLE Personalstamm
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Personalstamm
-    ADD CONSTRAINT FOREIGN KEY(PersonalID) REFERENCES Telefonnummern(ReferenzID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
 
 ALTER TABLE Personalstamm_Buchhaltung
     ADD CONSTRAINT FOREIGN KEY(PersonalID) REFERENCES Personalstamm(PersonalID)
@@ -141,4 +128,4 @@ ALTER TABLE Produktvorlage
 ALTER TABLE Roecke
     ADD CONSTRAINT FOREIGN KEY(ProduktID) REFERENCES Produktstamm(ProduktID)
         ON DELETE RESTRICT
-        ON UPDATE CASCADE;
+        ON UPDATE CASCADE;87

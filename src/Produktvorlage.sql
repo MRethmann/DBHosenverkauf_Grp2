@@ -5,10 +5,10 @@ DROP TABLE IF EXISTS Produktvorlage;
 CREATE TABLE Produktvorlage
 (
     ProduktID CHAR(10) NOT NULL,
+    ObergruppeID Integer,
+    UntergruppeID Integer,
     Verbrauchsmenge DECIMAL(9,2),
     Materialkosten DECIMAL(9,2),
-    UntergruppeID Integer,
-    ObergruppeID Integer,
     PRIMARY KEY (ProduktID)
 );
 

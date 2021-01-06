@@ -35,12 +35,6 @@ ALTER TABLE Hose
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Lieferantenstamm
-    ADD CONSTRAINT FOREIGN KEY(LieferantenID) REFERENCES Personalstamm(PersonalID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
-
-
 ALTER TABLE Lieferantenstamm_zu_Materialstamm
     ADD CONSTRAINT FOREIGN KEY(LieferantenID) REFERENCES Lieferantenstamm (LieferantenID)
         ON DELETE RESTRICT

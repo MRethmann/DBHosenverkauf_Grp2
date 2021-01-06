@@ -4,13 +4,14 @@ DROP TABLE IF EXISTS Produktionsmaterial;
 
 CREATE TABLE Produktionsmaterial
 (
+    ObergruppeID INT NOT NULL,
     UntergruppeID INT NOT NULL ,
-    ObergruppeID INT NOT NULL ,
+    FarbID INT,
     Menge Decimal(9,2) ,
     Ursprungsland VARCHAR (255),
     Bezeichnung_Obergruppe VARCHAR (255),
     Bezeichnung_Untergruppe VARCHAR (255),
-    FarbID INT,
+
     MerkmalID INT,
     Primary Key (UntergruppeID,ObergruppeID)
 

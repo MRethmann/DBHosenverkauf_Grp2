@@ -1,3 +1,7 @@
+use hosenfabrik
+
+#Kunden hinzufügen
+insert into kundenstamm value()
 Use hosenfabrik;
 #Kunden hinzufügen
 INSERT INTO kundenstamm VALUE

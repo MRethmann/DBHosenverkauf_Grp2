@@ -12,8 +12,6 @@ CREATE TABLE KUNDENSTAMM
     Laendercode CHAR(3),
     PRIMARY KEY (KundenID)
 
-
-
 );
 
 ALTER TABLE Kundenstamm

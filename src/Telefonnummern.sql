@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS Telefonnummern
     PRIMARY KEY (ReferenzID, Telefonnummer)
 );
 
-# Muss noch ausgeführt werden
+
 
 
 

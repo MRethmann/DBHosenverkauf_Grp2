@@ -62,13 +62,13 @@ DROP TABLE IF EXISTS Hilfsstoffe;
 
 CREATE TABLE Hilfsstoffe
 (
-    UntergruppeID INT NOT NULL ,
     ObergruppeID INT NOT NULL ,
+    UntergruppeID INT NOT NULL ,
+    FarbID INT,
     Menge Decimal(9,2) ,
     Ursprungsland VARCHAR (255),
     Bezeichnung_Obergruppe VARCHAR (255),
     Bezeichnung_Untergruppe VARCHAR (255),
-    FarbID INT,
     Primary Key (UntergruppeID,ObergruppeID)
 
 
@@ -195,16 +195,16 @@ CREATE TABLE PRIVATER_KUNDE
 
 );
 DROP TABLE IF EXISTS Produktionsmaterial;
-
 CREATE TABLE Produktionsmaterial
 (
+    ObergruppeID INT NOT NULL,
     UntergruppeID INT NOT NULL ,
-    ObergruppeID INT NOT NULL ,
+    FarbID INT,
     Menge Decimal(9,2) ,
     Ursprungsland VARCHAR (255),
     Bezeichnung_Obergruppe VARCHAR (255),
     Bezeichnung_Untergruppe VARCHAR (255),
-    FarbID INT,
+
     MerkmalID INT,
     Primary Key (UntergruppeID,ObergruppeID)
 
@@ -225,17 +225,16 @@ CREATE TABLE Produktstamm
 
     Primary key (ProduktID)
 );
-DROP TABLE IF EXISTS Produktvorlage;
-
 CREATE TABLE Produktvorlage
 (
     ProduktID CHAR(10) NOT NULL,
+    ObergruppeID Integer,
+    UntergruppeID Integer,
     Verbrauchsmenge DECIMAL(9,2),
     Materialkosten DECIMAL(9,2),
-    UntergruppeID Integer,
-    ObergruppeID Integer,
     PRIMARY KEY (ProduktID)
 );
+
 DROP TABLE IF EXISTS Qualitaetsmerkmal;
 
 CREATE TABLE Qualitaetsmerkmal

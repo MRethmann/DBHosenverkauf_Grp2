@@ -9,7 +9,6 @@ CREATE TABLE Produktvorlage
     UntergruppeID Integer,
     Verbrauchsmenge DECIMAL(9,2),
     Materialkosten DECIMAL(9,2),
-
     PRIMARY KEY (ProduktID)
 );
 

@@ -254,7 +254,6 @@ CREATE TABLE Rechnung
     VaNr INTEGER,
     Abgeschlossen BOOLEAN,
     PRIMARY KEY (RechnungsID)
-
 );
 DROP TABLE IF EXISTS Roecke;
 CREATE TABLE Roecke
@@ -264,8 +263,6 @@ CREATE TABLE Roecke
     Laenge    Integer,
     Brundumfang Integer,
     Weite  Integer,
-
-
 
     Primary key (ProduktID)
 );

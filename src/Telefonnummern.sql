@@ -9,17 +9,7 @@ CREATE TABLE IF NOT EXISTS Telefonnummern
 );
 
 # Muss noch ausgeführt werden
-ALTER TABLE Telefonnummern
-    ADD CONSTRAINT FOREIGN KEY(ReferenzID) REFERENCES Personalstamm(PersonalID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
 
-ALTER TABLE Telefonnummern
-    ADD CONSTRAINT FOREIGN KEY(ReferenzID) REFERENCES Lieferantenstamm(LieferantenID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
 
-ALTER TABLE Telefonnummern
-    ADD CONSTRAINT FOREIGN KEY(ReferenzID) REFERENCES Kundenstamm(KundenID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
+
+

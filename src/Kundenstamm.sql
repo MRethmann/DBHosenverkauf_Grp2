@@ -9,9 +9,14 @@ CREATE TABLE KUNDENSTAMM
     Hausnummer VARCHAR(255),
     Ort VARCHAR(255),
     PLZ CHAR(5),
-    Laendercode CHAR(5),
+    Laendercode CHAR(3),
     PRIMARY KEY (KundenID)
 
 
 
 );
+
+ALTER TABLE Kundenstamm
+    ADD CONSTRAINT FOREIGN KEY(KundenID) REFERENCES Telefonnummern(ReferenzID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

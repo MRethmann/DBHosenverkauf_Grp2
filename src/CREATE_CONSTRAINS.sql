@@ -128,4 +128,19 @@ ALTER TABLE Produktvorlage
 ALTER TABLE Roecke
     ADD CONSTRAINT FOREIGN KEY(ProduktID) REFERENCES Produktstamm(ProduktID)
         ON DELETE RESTRICT
-        ON UPDATE CASCADE;87
+        ON UPDATE CASCADE;
+
+ALTER TABLE Telefonnummern
+    ADD CONSTRAINT FOREIGN KEY(ReferenzPersonal) REFERENCES Personalstamm(PersonalID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Telefonnummern
+    ADD CONSTRAINT FOREIGN KEY(ReferenzLieferant) REFERENCES Lieferantenstamm(LieferantenID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Telefonnummern
+    ADD CONSTRAINT FOREIGN KEY(ReferenzKunde) REFERENCES Kundenstamm(KundenID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

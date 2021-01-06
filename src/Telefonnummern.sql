@@ -3,10 +3,10 @@ USE hosenfabrik;
 DROP TABLE IF EXISTS Telefonnummern;
 CREATE TABLE IF NOT EXISTS Telefonnummern
 (
-    ReferenzKunde CHAR(10) NOT NULL,
-    ReferenzPersonal CHAR(10) NOT NULL,
-    ReferenzLieferant CHAR(10) NOT NULL,
-    TelefonnummerID Integer auto_increment,
+    ReferenzKunde CHAR(10),
+    ReferenzPersonal CHAR(10),
+    ReferenzLieferant CHAR(10),
+    TelefonnummerID Integer auto_increment NOT NULL,
     Telefonnummer VARCHAR(20),
     PRIMARY KEY (TelefonnummerID, Telefonnummer)
 );

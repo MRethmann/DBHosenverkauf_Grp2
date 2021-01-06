@@ -10,14 +10,14 @@ INSERT INTO kundenstamm VALUE
 INSERT INTO privater_kunde VALUE
 ('K123456789', 'Max', 'Mustermann');
 
-INSERT INTO telefonnummern VALUE
-('K123456789', '018054646');
+INSERT INTO telefonnummern(ReferenzKunde, ReferenzPersonal, ReferenzLieferant, Telefonnummer) VALUE
+('K123456789', null, null, '018054646');
 
 #Kunde abrufen
 SELECT Privater_Kunde.Vorname, Privater_Kunde.Nachname, Ort, PLZ, Straße, Hausnummer, Telefonnummern.Telefonnummer
 FROM kundenstamm
 INNER JOIN privater_kunde ON kundenstamm.KundenID = privater_kunde.KundenID
-INNER JOIN telefonnummern ON kundenstamm.KundenID = telefonnummern.ReferenzID
+INNER JOIN telefonnummern ON kundenstamm.KundenID = telefonnummern.ReferenzKunde
 WHERE kundenstamm.KundenID = 'K123456789';
 
 #Produkt hinzufügen

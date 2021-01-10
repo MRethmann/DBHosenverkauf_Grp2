@@ -122,8 +122,8 @@ INSERT INTO fertigungsauftrag(produktid, fanr, abgeschlossen) VALUES
 
 #Bestellposition erstellen
 INSERT INTO bestellposition(BestellungsID, ProduktID, FaNR, Menge, Einzelpreis) VALUES
-(1, '1183', 1, 300, 32),
-(1, '1159B', 2, 200, 35);
+(1, '1183', 300, 32),
+(1, '1159B', 200, 35);
 
 
 #Rechnung erstellen

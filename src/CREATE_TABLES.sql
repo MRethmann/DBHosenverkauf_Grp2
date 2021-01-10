@@ -37,7 +37,7 @@ CREATE TABLE FERTIGUNGSAUFTRAG
 
 (
     ProduktID char(10),
-    FaNr INTEGER,
+    FaNr INTEGER auto_increment,
     Abgeschlossen BOOLEAN,
 
     PRIMARY KEY (FaNR)

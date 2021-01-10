@@ -26,8 +26,9 @@ INSERT INTO farbe(farbid, farbe) VALUES
 (01, 'Anthrazit'),
 (04, 'Marine');
 
-INSERT INTO produktstamm(ProduktID, `2te_Wahl`, Saison, Bezeichnung, Beschreibung, Menge, Preis, FarbID) VALUE
-    ('1183', false, 'FrSo', 'Bettina', 'Damenhose mit Komforttaille', 30, 89.99, 04);
+INSERT INTO produktstamm(ProduktID, `2te_Wahl`, Saison, Bezeichnung, Beschreibung, Menge, Preis, FarbID) VALUES
+    ('1183', false, 'FrSo', 'Bettina', 'Damenhose mit Komforttaille', 30, 89.99, 04),
+    ('1159B', false, 'FrSo', 'Ina', 'Damenhose mit Komforttaille', 30, 89.99, 04);
 
 INSERT INTO hose(ProduktID, EU_Groeße, Schrittlänge, Bundumfang, Gesäßweite) VALUE
 ('1183', '36', '34','91', '96');
@@ -113,10 +114,33 @@ WHERE Vorgesetzter = (SELECT PersonalID FROM personalstamm WHERE Vorname = 'Mari
 INSERT INTO Bestellung(PersonalID, KundenID, Bestelldatum) VALUE
 ('P123456792','K123456789', '2021-01-10');
 
-#Rechnung erstellen
-INSERT INTO rechnung(BestellungsID, KOSTEN, ZAHLUNGSFRIST, ABGESCHLOSSEN) VALUE
-(2,10000.99, '2021-01-11', false);
+#Fertigungsauftrag erstellen
+INSERT INTO fertigungsauftrag(produktid, fanr, abgeschlossen) VALUES
+('1183', 1, false),
+('1159B', 2, false);
+
 
 #Bestellposition erstellen
-INSERT INTO bestellposition(BestellungsID, ProduktID, FaNR, Menge, Beschreibung, Preis, Einheit, Gesamtbetrag) VALUE
-(2, '1183', 1, 300, )
+INSERT INTO bestellposition(BestellungsID, ProduktID, FaNR, Menge, Einzelpreis) VALUES
+(1, '1183', 1, 300, 32),
+(1, '1159B', 2, 200, 35);
+
+
+#Rechnung erstellen
+INSERT INTO rechnung(BestellungsID, KOSTEN, ZAHLUNGSFRIST, ABGESCHLOSSEN) VALUE
+(1, (SELECT SUM(Gesamtbetrag) FROM bestellposition WHERE BestellungsID = 1), '2021-01-11', false);
+
+#Mitarbeiter einem Fertigungsauftrag zuweisen
+INSERT INTO mitarbeiter_zu_fertigungsauftrag(fanr, personalid) VALUES
+(1, 'P123456792'),
+(1, 'P123456791');
+
+#Abfrage der dem Fa zugeteilten Personal und der zu Produzierenden Menge von Produkt XY
+SELECT p.Bezeichnung, b.Menge, p2.Vorname, p2.Nachname, f.abgeschlossen
+From fertigungsauftrag f
+INNER JOIN produktstamm p on f.ProduktID = p.ProduktID
+INNER JOIN bestellposition b on f.FaNr = b.FaNR
+INNER JOIN mitarbeiter_zu_fertigungsauftrag mzf on f.FaNr = mzf.FaNr
+INNER JOIN personalstamm p2 on mzf.PersonalID = p2.PersonalID
+WHERE b.BestellungsID = 1;
+

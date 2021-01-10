@@ -5,11 +5,9 @@ DROP TABLE IF EXISTS FERTIGUNGSAUFTRAG;
 CREATE TABLE FERTIGUNGSAUFTRAG
 
 (
-    ProduktID INTEGER,
+    ProduktID char(10),
     FaNr INTEGER,
     Abgeschlossen BOOLEAN,
 
     PRIMARY KEY (FaNR)
-
-
 );

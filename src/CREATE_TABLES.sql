@@ -2,14 +2,14 @@ USE hosenfabrik;
 
 DROP TABLE IF EXISTS Bestellposition;
 CREATE TABLE Bestellposition(
-    BestellungsID Integer,
-    ProduktID CHAR(10),
-    FaNR Integer,
-    Menge   Integer,
-    Preis Decimal(9,2),
-    Gesamtbetrag Double,
+                                BestellungsID Integer,
+                                ProduktID CHAR(10),
+                                FaNR Integer,
+                                Menge   Integer,
+                                Einzelpreis Decimal(9,2),
+                                Gesamtbetrag double as (Einzelpreis * Menge),
 
-    Primary key(BestellungsID, ProduktID)
+                                Primary key(BestellungsID, ProduktID)
 );
 
 DROP TABLE IF EXISTS Bestellung;
@@ -36,7 +36,7 @@ DROP TABLE IF EXISTS FERTIGUNGSAUFTRAG;
 CREATE TABLE FERTIGUNGSAUFTRAG
 
 (
-    ProduktID INTEGER,
+    ProduktID char(10),
     FaNr INTEGER,
     Abgeschlossen BOOLEAN,
 

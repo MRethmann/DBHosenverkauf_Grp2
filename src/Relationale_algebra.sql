@@ -1,8 +1,11 @@
 #Kunden hinzufügen
 Use hosenfabrik;
 #Kunden hinzufügen
-INSERT INTO kundenstamm(kundenid, umsatz, straße, hausnummer, ort, plz, laendercode) VALUE
-('K123456789', 10000.00, 'Musterstraße', '6', 'Musterstadt', '64352', 'DE');
+INSERT INTO kundenstamm(kundenid, umsatz) VALUE
+('K123456789', 10000.00);
+
+INSERT INTO kundenstamm_zu_lieferadressen(KundenID, Straße, Hausnummer, Ort, PLZ, Laendercode) VALUE
+('K123456789', 'Musterstraße', '6', 'Musterstadt', '64352', 'DE');
 
 INSERT INTO privater_kunde VALUE
 ('K123456789', 'Max', 'Mustermann');
@@ -11,10 +14,11 @@ INSERT INTO telefonnummern(ReferenzKunde, ReferenzPersonal, ReferenzLieferant, T
 ('K123456789', null, null, '018054646');
 
 #Kunde abrufen
-SELECT Privater_Kunde.Vorname, Privater_Kunde.Nachname, Ort, PLZ, Straße, Hausnummer, Telefonnummern.Telefonnummer
+SELECT Privater_Kunde.Vorname, Privater_Kunde.Nachname, kl.Ort, kl.PLZ, kl.Straße, kl.Hausnummer, Telefonnummern.Telefonnummer
 FROM kundenstamm
 INNER JOIN privater_kunde ON kundenstamm.KundenID = privater_kunde.KundenID
 INNER JOIN telefonnummern ON kundenstamm.KundenID = telefonnummern.ReferenzKunde
+INNER JOIN kundenstamm_zu_lieferadressen kl on kundenstamm.KundenID = kl.KundenID
 WHERE kundenstamm.KundenID = 'K123456789';
 
 #Produkt hinzufügen
@@ -70,3 +74,49 @@ INNER JOIN lieferanten_zu_produktstamm lzp on l.LieferantenID = lzp.LieferantenI
 INNER JOIN produktstamm p on lzp.ProduktID = p.ProduktID
 WHERE p.Bezeichnung = 'Bettina';
 
+#gelieferte Menge an Hilfstoff XY
+SELECT l.Firmenname, h.Bezeichnung_Obergruppe, h.Bezeichnung_Untergruppe, lzm.Menge
+FROM lieferantenstamm l
+INNER JOIN lieferantenstamm_zu_materialstamm lzm on l.LieferantenID = lzm.LieferantenID
+INNER JOIN hilfsstoffe h on lzm.ObergruppeID = h.ObergruppeID AND lzm.UntergruppeID = h.UntergruppeID
+WHERE h.Bezeichnung_Obergruppe = 'Nähgarn';
+
+
+SELECT l.Firmenname, pm.Bezeichnung_Obergruppe, pm.Bezeichnung_Untergruppe, lzm.Menge
+FROM lieferantenstamm l
+         INNER JOIN lieferantenstamm_zu_materialstamm lzm on l.LieferantenID = lzm.LieferantenID
+         INNER JOIN produktionsmaterial pm on lzm.ObergruppeID = pm.ObergruppeID AND lzm.UntergruppeID = pm.UntergruppeID
+WHERE l.Firmenname = 'Muster GmbH';
+
+#Personal hinzufügen
+INSERT INTO personalstamm(personalid, nachname, vorname, straße, hausnummer,
+                          ort, plz, ländercode, mtag, vorgesetzter, vtag, firmenname) VALUES
+('P123456789', 'Musterfrau', 'Lisa', 'Musterstraße', '74', 'Halalburg', '12345', 'DEU', true, null, false, null),
+('P123456790', 'Musterfrau', 'Marie', 'Musterstraße', '74', 'Haramburg', '12346', 'DEU', true, null, false, null),
+('P123456791', 'Mustermann', 'Max', 'Musterstraße', '74', 'Halalburg', '12345', 'DEU', true, 'P123456790', false, null),
+('P123456792', 'Benten', 'Patrick', 'Musterstraße', '78', 'Eisten', '12345', 'DEU', false, null, true, 'Muster GBR');
+
+INSERT INTO personalstamm_buchhaltung (PersonalID, Vollmacht) VALUE
+('P123456789', 'PPA');
+
+INSERT INTO personalstamm_versand(PersonalID, Staplerführerschein) VALUE
+('P123456790', true);
+
+INSERT INTO personalstamm_produktion(PersonalID, Schicht, Maschinenkenntnisse) VALUE
+('P123456791', 'Nacht', 'Kopierer');
+
+#Abfrage der Angestelleten von Marie Musterfrau
+SELECT Nachname, Vorname FROM personalstamm
+WHERE Vorgesetzter = (SELECT PersonalID FROM personalstamm WHERE Vorname = 'Marie' AND Nachname = 'Musterfrau');
+
+#Erstellung einer Bestellung
+INSERT INTO Bestellung(PersonalID, KundenID, Bestelldatum) VALUE
+('P123456792','K123456789', '2021-01-10');
+
+#Rechnung erstellen
+INSERT INTO rechnung(BestellungsID, KOSTEN, ZAHLUNGSFRIST, ABGESCHLOSSEN) VALUE
+(2,10000.99, '2021-01-11', false);
+
+#Bestellposition erstellen
+INSERT INTO bestellposition(BestellungsID, ProduktID, FaNR, Menge, Beschreibung, Preis, Einheit, Gesamtbetrag) VALUE
+(2, '1183', 1, 300, )

@@ -2,24 +2,23 @@ USE hosenfabrik;
 
 DROP TABLE IF EXISTS Bestellposition;
 CREATE TABLE Bestellposition(
+    BestellungsID Integer,
+    ProduktID CHAR(10),
+    FaNR Integer,
+    Menge   Integer,
+    Preis Decimal(9,2),
+    Gesamtbetrag Double,
 
-                                KundenID CHAR(10),
-                                BestellungsID Integer,
-                                Menge   Integer,
-                                Beschreibung VARCHAR(255),
-                                Preis Decimal(9,2),
-                                Einheit Varchar(50),
-                                Gesamtbetrag Double,
-                                ProduktID CHAR(10),
-                                FaNR Integer,
-                                Primary key(KundenID , BestellungsID)
+    Primary key(BestellungsID, ProduktID)
 );
 
-DROP TABLE IF EXISTS BESTELLUNG;
-CREATE TABLE BESTELLUNG
+DROP TABLE IF EXISTS Bestellung;
+CREATE TABLE Bestellung
 
 (
-    BestellungsID INTEGER,
+    BestellungsID INTEGER AUTO_INCREMENT,
+    PersonalID CHAR(10),
+    KundenID CHAR(10),
     Bestelldatum DATE,
 
     PRIMARY KEY (BestellungsID)
@@ -254,9 +253,9 @@ DROP TABLE IF EXISTS Rechnung;
 CREATE TABLE Rechnung
 (
     RechnungsID Integer Auto_Increment,
+    BestellungsID Integer,
     Kosten DECIMAL (9,2),
     Zahlungsfrist DATE,
-    VaNr INTEGER,
     Abgeschlossen BOOLEAN,
     PRIMARY KEY (RechnungsID)
 );

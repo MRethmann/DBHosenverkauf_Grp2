@@ -52,8 +52,20 @@ WHERE produktstamm.Bezeichnung = 'Bettina';
 
 #Lieferanten erstellen
 INSERT INTO lieferantenstamm(LieferantenID, Firmenname, Ländercode, Straße, Hausnummer,
-                             Ort, PLZ, Exportflag, Ausfuhrmenge, Importflag, Einfuhrmenge) VALUE
-('L1234', 'Muster GmbH', 'DEU', 'Musterstraße', '1b', 'Haramburg', '12345', true, 10000, false, null);
+                             Ort, PLZ, Exportflag, Ausfuhrmenge, Importflag, Einfuhrmenge) VALUES
+('L1234', 'Muster GmbH', 'DEU', 'Musterstraße', '1b', 'Haramburg', '12345', true, 10000, false, null),
+('L1235', 'Muster 3 GmbH', 'DEU', 'Musterstraße', '2b', 'Halalburg', '12346', false, null, true, 15000);
 
-INSERT INTO lieferanten_zu_produktstamm(LieferantenID, ProduktID) VALUE
-('L1234', '1183');
+INSERT INTO lieferanten_zu_produktstamm(LieferantenID, ProduktID, Menge) VALUES
+('L1234', '1183', 150.2),
+('L1235','1183',110);
+
+INSERT INTO lieferantenstamm_zu_materialstamm(LieferantenID, ObergruppeID, UntergruppeID, Menge) VALUE
+('L1234', 60, 15, 120.4);
+
+#gelieferte Menge an Produkt XY
+SELECT l.Firmenname, p.Bezeichnung, lzp.Menge
+From lieferantenstamm l
+INNER JOIN lieferanten_zu_produktstamm lzp on l.LieferantenID = lzp.LieferantenID
+INNER JOIN produktstamm p on lzp.ProduktID = p.ProduktID
+WHERE p.Bezeichnung = 'Bettina';187

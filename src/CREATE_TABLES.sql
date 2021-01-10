@@ -51,9 +51,6 @@ CREATE TABLE GEWERBLICHER_KUNDE
 (
     KundenID CHAR(10) NOT NULL,
     Firmenname VARCHAR(255),
-    Ansprechpartner VARCHAR(255),
-    Vorname VARCHAR(255),
-    Nachname VARCHAR(255),
     PRIMARY KEY (KundenID)
 
 );
@@ -277,4 +274,16 @@ CREATE TABLE IF NOT EXISTS Telefonnummern
     TelefonnummerID Integer auto_increment NOT NULL,
     Telefonnummer VARCHAR(20),
     PRIMARY KEY (TelefonnummerID, Telefonnummer)
+);
+
+DROP TABLE IF EXISTS GEWERBLICHER_KUNDE_zu_Ansprechpartner;
+
+CREATE TABLE GEWERBLICHER_KUNDE_zu_Ansprechpartner
+
+(
+    KundenID CHAR(10) NOT NULL,
+    Vorname VARCHAR(255),
+    Nachname VARCHAR(255),
+    PRIMARY KEY (KundenID,Vorname,Nachname)
+
 );

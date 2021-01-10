@@ -88,13 +88,19 @@ CREATE TABLE KUNDENSTAMM
 (
     KundenID Char(10) NOT NULL,
     Umsatz DECIMAL(9,2),
+    PRIMARY KEY (KundenID)
+
+);
+DROP TABLE IF EXISTS Kundenstamm_zu_Lieferantenstamm;
+CREATE TABLE Kundenstamm_zu_Lieferantenstamm
+(
+    KundenID Char(10) NOT NULL,
     Straße VARCHAR(255),
     Hausnummer VARCHAR(255),
     Ort VARCHAR(255),
     PLZ CHAR(5),
     Laendercode CHAR(3),
-    PRIMARY KEY (KundenID)
-
+    PRIMARY KEY (KundenID, Straße, Hausnummer, PLZ)
 );
 DROP TABLE IF EXISTS Lieferantenstamm;
 

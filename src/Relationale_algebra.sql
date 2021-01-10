@@ -68,4 +68,5 @@ SELECT l.Firmenname, p.Bezeichnung, lzp.Menge
 From lieferantenstamm l
 INNER JOIN lieferanten_zu_produktstamm lzp on l.LieferantenID = lzp.LieferantenID
 INNER JOIN produktstamm p on lzp.ProduktID = p.ProduktID
-WHERE p.Bezeichnung = 'Bettina';187
+WHERE p.Bezeichnung = 'Bettina';
+

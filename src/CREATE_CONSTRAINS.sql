@@ -119,6 +119,11 @@ ALTER TABLE Produktvorlage
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
+ALTER TABLE Kundenstamm_zu_Lieferantenstamm
+    ADD CONSTRAINT Foreign Key (KundenID) REFERENCES kundenstamm(KundenID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
 ALTER TABLE Roecke
     ADD CONSTRAINT FOREIGN KEY(ProduktID) REFERENCES Produktstamm(ProduktID)
         ON DELETE RESTRICT

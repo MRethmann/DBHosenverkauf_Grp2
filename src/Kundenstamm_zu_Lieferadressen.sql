@@ -1,7 +1,7 @@
 USE Hosenfabrik;
 
-DROP TABLE IF EXISTS Kundenstamm_zu_Lieferantenstamm;
-CREATE TABLE Kundenstamm_zu_Lieferantenstamm
+DROP TABLE IF EXISTS kundenstamm_zu_lieferadressen;
+CREATE TABLE Kundenstamm_zu_Lieferadressen
 (
     KundenID Char(10) NOT NULL,
     Straße VARCHAR(255),
@@ -12,7 +12,7 @@ CREATE TABLE Kundenstamm_zu_Lieferantenstamm
     PRIMARY KEY (KundenID, Straße, Hausnummer, PLZ)
 );
 
-ALTER TABLE Kundenstamm_zu_Lieferantenstamm
+ALTER TABLE kundenstamm_zu_lieferadressen
 ADD CONSTRAINT Foreign Key (KundenID) REFERENCES kundenstamm(KundenID)
     ON DELETE RESTRICT
     ON UPDATE CASCADE;

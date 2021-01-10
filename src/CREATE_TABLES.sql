@@ -91,8 +91,8 @@ CREATE TABLE KUNDENSTAMM
     PRIMARY KEY (KundenID)
 
 );
-DROP TABLE IF EXISTS Kundenstamm_zu_Lieferantenstamm;
-CREATE TABLE Kundenstamm_zu_Lieferantenstamm
+DROP TABLE IF EXISTS Kundenstamm_zu_Lieferadressen;
+CREATE TABLE Kundenstamm_zu_Lieferadressen
 (
     KundenID Char(10) NOT NULL,
     Straße VARCHAR(255),

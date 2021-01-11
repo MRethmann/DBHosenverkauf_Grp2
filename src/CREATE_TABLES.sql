@@ -1,15 +1,16 @@
 USE hosenfabrik;
 
 DROP TABLE IF EXISTS Bestellposition;
-CREATE TABLE Bestellposition(
-                                BestellungsID Integer,
-                                ProduktID CHAR(10),
-                                FaNR Integer,
-                                Menge   Integer,
-                                Einzelpreis Decimal(9,2),
-                                Gesamtbetrag double as (Einzelpreis * Menge),
+CREATE TABLE Bestellposition
+(
+    BestellungsID Integer,
+    ProduktID CHAR(10),
+    Positionsnummer Integer,
+    Menge   Integer,
+    Einzelpreis Decimal(9,2),
+    Gesamtbetrag double as (Einzelpreis * Menge),
 
-                                Primary key(BestellungsID, ProduktID)
+    Primary key(BestellungsID, ProduktID)
 );
 
 DROP TABLE IF EXISTS Bestellung;
@@ -31,21 +32,22 @@ CREATE TABLE Farbe
     Farbe VARCHAR (255),
     Primary Key (FarbID)
 );
-DROP TABLE IF EXISTS FERTIGUNGSAUFTRAG;
+DROP TABLE IF EXISTS Fertigungsauftrag;
 
-CREATE TABLE FERTIGUNGSAUFTRAG
+CREATE TABLE Fertigungsauftrag
 
 (
-    ProduktID char(10),
     FaNr INTEGER auto_increment,
+    ProduktID char(10),
+    BestellungsID Integer,
     Abgeschlossen BOOLEAN,
 
     PRIMARY KEY (FaNR)
 
 );
-DROP TABLE IF EXISTS GEWERBLICHER_KUNDE;
+DROP TABLE IF EXISTS Gewerblicher_Kunde;
 
-CREATE TABLE GEWERBLICHER_KUNDE
+CREATE TABLE Gewerblicher_Kunde
 
 (
     KundenID CHAR(10) NOT NULL,

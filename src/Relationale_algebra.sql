@@ -114,17 +114,15 @@ WHERE Vorgesetzter = (SELECT PersonalID FROM personalstamm WHERE Vorname = 'Mari
 INSERT INTO Bestellung(PersonalID, KundenID, Bestelldatum) VALUE
 ('P123456792','K123456789', '2021-01-10');
 
-#Fertigungsauftrag erstellen
-INSERT INTO fertigungsauftrag(produktid, fanr, abgeschlossen) VALUES
-('1183', 1, false),
-('1159B', 2, false);
-
-
 #Bestellposition erstellen
-INSERT INTO bestellposition(BestellungsID, ProduktID, FaNR, Menge, Einzelpreis) VALUES
-(1, '1183', 300, 32),
-(1, '1159B', 200, 35);
+INSERT INTO bestellposition(BestellungsID, ProduktID, Positionsnummer, Menge, Einzelpreis) VALUES
+(1, '1183', 1, 300, 32),
+(1, '1159B', 2, 200, 35);
 
+#Fertigungsauftrag erstellen
+INSERT INTO fertigungsauftrag(produktid, bestellungsid, abgeschlossen) VALUES
+('1183', 1, false),
+('1159B', 1, false);
 
 #Rechnung erstellen
 INSERT INTO rechnung(BestellungsID, KOSTEN, ZAHLUNGSFRIST, ABGESCHLOSSEN) VALUE
@@ -139,7 +137,7 @@ INSERT INTO mitarbeiter_zu_fertigungsauftrag(fanr, personalid) VALUES
 SELECT p.Bezeichnung, b.Menge, p2.Vorname, p2.Nachname, f.abgeschlossen
 From fertigungsauftrag f
 INNER JOIN produktstamm p on f.ProduktID = p.ProduktID
-INNER JOIN bestellposition b on f.FaNr = b.FaNR
+INNER JOIN bestellposition b on f.BestellungsID = b.BestellungsID and f.ProduktID = b.ProduktID
 INNER JOIN mitarbeiter_zu_fertigungsauftrag mzf on f.FaNr = mzf.FaNr
 INNER JOIN personalstamm p2 on mzf.PersonalID = p2.PersonalID
 WHERE b.BestellungsID = 1;

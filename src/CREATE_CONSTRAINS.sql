@@ -5,11 +5,6 @@ ALTER TABLE Bestellposition
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Bestellposition
-    ADD CONSTRAINT FOREIGN KEY(FaNR) REFERENCES Fertigungsauftrag(FaNR)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
-
 ALTER TABLE Bestellung
     ADD CONSTRAINT FOREIGN KEY (PersonalID) REFERENCES personalstamm(PersonalID)
         ON DELETE RESTRICT
@@ -25,7 +20,12 @@ ALTER TABLE Bestellposition
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE GEWERBLICHER_KUNDE
+ALTER TABLE Fertigungsauftrag
+    ADD CONSTRAINT FOREIGN KEY (BestellungsID, ProduktID) REFERENCES bestellposition(BestellungsID, ProduktID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Gewerblicher_Kunde
     ADD CONSTRAINT FOREIGN KEY(KundenID) REFERENCES Kundenstamm(KundenID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
@@ -60,7 +60,7 @@ ALTER TABLE Lieferanten_zu_Produktstamm
         ON UPDATE CASCADE;
 
 ALTER TABLE Mitarbeiter_zu_Fertigungsauftrag
-    ADD CONSTRAINT FOREIGN KEY(FaNr) REFERENCES FERTIGUNGSAUFTRAG(FaNR)
+    ADD CONSTRAINT FOREIGN KEY(FaNr) REFERENCES Fertigungsauftrag(FaNR)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
@@ -149,7 +149,7 @@ ALTER TABLE Telefonnummern
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE GEWERBLICHER_KUNDE_zu_Ansprechpartner
+ALTER TABLE Gewerblicher_Kunde_zu_Ansprechpartner
     ADD CONSTRAINT FOREIGN KEY(KundenID) REFERENCES Gewerblicher_kunde(KundenID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;

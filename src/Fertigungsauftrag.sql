@@ -3,7 +3,6 @@ USE hosenfabrik;
 DROP TABLE IF EXISTS Fertigungsauftrag;
 
 CREATE TABLE Fertigungsauftrag
-
 (
     FaNr INTEGER auto_increment,
     ProduktID char(10),

@@ -1,5 +1,5 @@
-#Kunden hinzufügen
 Use hosenfabrik;
+
 #Kunden hinzufügen
 INSERT INTO kundenstamm(kundenid, umsatz) VALUE
 ('K123456789', 10000.00);
@@ -13,29 +13,20 @@ INSERT INTO privater_kunde VALUE
 INSERT INTO telefonnummern(ReferenzKunde, ReferenzPersonal, ReferenzLieferant, Telefonnummer) VALUE
 ('K123456789', null, null, '018054646');
 
-#Kunde abrufen
-SELECT Privater_Kunde.Vorname, Privater_Kunde.Nachname, kl.Ort, kl.PLZ, kl.Straße, kl.Hausnummer, Telefonnummern.Telefonnummer
-FROM kundenstamm
-INNER JOIN privater_kunde ON kundenstamm.KundenID = privater_kunde.KundenID
-INNER JOIN telefonnummern ON kundenstamm.KundenID = telefonnummern.ReferenzKunde
-INNER JOIN kundenstamm_zu_lieferadressen kl on kundenstamm.KundenID = kl.KundenID
-WHERE kundenstamm.KundenID = 'K123456789';
-
 #Produkt hinzufügen
 INSERT INTO farbe(farbid, farbe) VALUES
 (01, 'Anthrazit'),
 (04, 'Marine');
 
 INSERT INTO produktstamm(ProduktID, `2te_Wahl`, Saison, Bezeichnung, Beschreibung, Menge, Preis, FarbID) VALUES
-    ('1183', false, 'FrSo', 'Bettina', 'Damenhose mit Komforttaille', 30, 89.99, 04),
-    ('1159B', false, 'FrSo', 'Ina', 'Damenhose mit Komforttaille', 30, 89.99, 04);
+('1183', false, 'FrSo', 'Bettina', 'Damenhose mit Komforttaille', 30, 89.99, 04),
+('1159B', false, 'FrSo', 'Ina', 'Damenhose mit Komforttaille', 30, 89.99, 04);
 
 INSERT INTO hose(ProduktID, EU_Groeße, Schrittlänge, Bundumfang, Gesäßweite) VALUE
 ('1183', '36', '34','91', '96');
 
 Insert Into obergruppe_untergruppe(obergruppeId, untergruppeId) VALUES
 (60,15), (01,138);
-
 
 INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe) VALUE
 (60, 15, 01, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 120');
@@ -51,21 +42,6 @@ INSERT INTO produktvorlage(ProduktID, ObergruppeID, UntergruppeID, Verbrauchsmen
 ('1183',60, 15, 150, 0.09),
 (1183,01,138,15,1450);
 
-#Produktbestandteile Aufrufen
-(SELECT produktstamm.ProduktID as "ProduktID", produktstamm.Beschreibung,
-       p.Verbrauchsmenge as "Produktionsmaterial Menge", pm.Bezeichnung_Obergruppe, pm.Bezeichnung_Untergruppe
-       from produktstamm
-JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
-JOIN produktionsmaterial pm on p.ObergruppeID = pm.ObergruppeID and p.UntergruppeID = pm.UntergruppeID
-WHERE produktstamm.Bezeichnung = 'Bettina')
-Union
-(SELECT produktstamm.ProduktID as "ProduktID", produktstamm.Beschreibung, p.Verbrauchsmenge as "Hilfstoff Menge", h.Bezeichnung_Obergruppe as "Obergruppe", h.Bezeichnung_Untergruppe as "Untergruppe"
-from produktstamm
-         JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
-         JOIN hilfsstoffe h on p.ObergruppeID = h.ObergruppeID and p.UntergruppeID = h.UntergruppeID
-WHERE produktstamm.Bezeichnung = 'Bettina');
-
-
 #Lieferanten erstellen
 INSERT INTO lieferantenstamm(LieferantenID, Firmenname, Ländercode, Straße, Hausnummer,
                              Ort, PLZ, Exportflag, Ausfuhrmenge, Importflag, Einfuhrmenge) VALUES
@@ -79,28 +55,6 @@ INSERT INTO lieferanten_zu_produktstamm(LieferantenID, ProduktID, Menge) VALUES
 INSERT INTO lieferantenstamm_zu_materialstamm(LieferantenID, ObergruppeID, UntergruppeID, Menge) VALUES
 ('L1234', 60, 15, 120.4),
 ('L1234', 01, 138, 120.4);
-
-
-#gelieferte Menge an Produkt XY
-SELECT l.Firmenname, p.Bezeichnung, lzp.Menge
-From lieferantenstamm l
-INNER JOIN lieferanten_zu_produktstamm lzp on l.LieferantenID = lzp.LieferantenID
-INNER JOIN produktstamm p on lzp.ProduktID = p.ProduktID
-WHERE p.Bezeichnung = 'Bettina';
-
-#gelieferte Menge an Hilfstoff XY
-SELECT l.Firmenname, h.Bezeichnung_Obergruppe, h.Bezeichnung_Untergruppe, lzm.Menge
-FROM lieferantenstamm l
-INNER JOIN lieferantenstamm_zu_materialstamm lzm on l.LieferantenID = lzm.LieferantenID
-INNER JOIN hilfsstoffe h on lzm.ObergruppeID = h.ObergruppeID AND lzm.UntergruppeID = h.UntergruppeID
-WHERE h.Bezeichnung_Obergruppe = 'Nähgarn';
-
-#gelieferte Menge an Produktionsmaterial XY
-SELECT l.Firmenname, pm.Bezeichnung_Obergruppe, pm.Bezeichnung_Untergruppe, lzm.Menge
-FROM lieferantenstamm l
-         INNER JOIN lieferantenstamm_zu_materialstamm lzm on l.LieferantenID = lzm.LieferantenID
-         INNER JOIN produktionsmaterial pm on lzm.ObergruppeID = pm.ObergruppeID AND lzm.UntergruppeID = pm.UntergruppeID
-WHERE l.Firmenname = 'Muster GmbH';
 
 #Personal hinzufügen
 INSERT INTO personalstamm(personalid, nachname, vorname, straße, hausnummer,
@@ -118,10 +72,6 @@ INSERT INTO personalstamm_versand(PersonalID, Staplerführerschein) VALUE
 
 INSERT INTO personalstamm_produktion(PersonalID, Schicht, Maschinenkenntnisse) VALUE
 ('P123456791', 'Nacht', 'Kopierer');
-
-#Abfrage der Angestelleten von Marie Musterfrau
-SELECT Nachname, Vorname FROM personalstamm
-WHERE Vorgesetzter = (SELECT PersonalID FROM personalstamm WHERE Vorname = 'Marie' AND Nachname = 'Musterfrau');
 
 #Erstellung einer Bestellung
 INSERT INTO Bestellung(PersonalID, KundenID, Bestelldatum) VALUE
@@ -145,14 +95,3 @@ INSERT INTO rechnung(BestellungsID, KOSTEN, ZAHLUNGSFRIST, ABGESCHLOSSEN) VALUE
 INSERT INTO mitarbeiter_zu_fertigungsauftrag(fanr, personalid) VALUES
 (1, 'P123456792'),
 (1, 'P123456791');
-
-#Abfrage der dem Fa zugeteilten Personal und der zu Produzierenden Menge von Produkt XY
-SELECT p.Bezeichnung, b.Menge, p2.Vorname, p2.Nachname, f.abgeschlossen
-From fertigungsauftrag f
-INNER JOIN produktstamm p on f.ProduktID = p.ProduktID
-INNER JOIN bestellposition b on f.BestellungsID = b.BestellungsID and f.ProduktID = b.ProduktID
-INNER JOIN mitarbeiter_zu_fertigungsauftrag mzf on f.FaNr = mzf.FaNr
-INNER JOIN personalstamm p2 on mzf.PersonalID = p2.PersonalID
-WHERE b.BestellungsID = 1;
-
-#Abfrage

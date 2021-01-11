@@ -21,7 +21,7 @@ ALTER TABLE Bestellposition
         ON UPDATE CASCADE;
 
 ALTER TABLE Fertigungsauftrag
-    ADD CONSTRAINT FOREIGN KEY (BestellungsID, ProduktID) REFERENCES bestellposition(BestellungsID, ProduktID)
+    ADD CONSTRAINT FOREIGN KEY (BestellungsID, ProduktID) REFERENCES Bestellposition(BestellungsID, ProduktID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
@@ -136,6 +136,7 @@ ALTER TABLE Gewerblicher_Kunde_zu_Ansprechpartner
     ADD CONSTRAINT FOREIGN KEY(KundenID) REFERENCES Gewerblicher_kunde(KundenID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
+
 ALTER TABLE Rechnung
     ADD CONSTRAINT FOREIGN KEY (BestellungsID) REFERENCES bestellung(BestellungsID)
         ON DELETE RESTRICT

@@ -40,14 +40,6 @@ ALTER TABLE Hose
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Lieferantenstamm_zu_Materialstamm
-    ADD CONSTRAINT FOREIGN KEY(LieferantenID) REFERENCES Lieferantenstamm (LieferantenID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
-ALTER TABLE Lieferantenstamm_zu_Materialstamm
-    ADD CONSTRAINT FOREIGN KEY(UntergruppeID,ObergruppeID) REFERENCES  Produktionsmaterial (UntergruppeID,ObergruppeID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
 
 ALTER TABLE Lieferanten_zu_Produktstamm
     ADD CONSTRAINT FOREIGN KEY(LieferantenID) REFERENCES Lieferantenstamm(LieferantenID)
@@ -114,15 +106,6 @@ ALTER TABLE Produktvorlage
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Produktvorlage
-    ADD CONSTRAINT FOREIGN KEY(UntergruppeID,ObergruppeID) REFERENCES Produktionsmaterial(UntergruppeID,ObergruppeID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
-
-ALTER TABLE Produktvorlage
-    ADD CONSTRAINT FOREIGN KEY(UntergruppeID,ObergruppeID) REFERENCES Hilfsstoffe(UntergruppeID,ObergruppeID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;
 
 ALTER TABLE kundenstamm_zu_lieferadressen
     ADD CONSTRAINT Foreign Key (KundenID) REFERENCES kundenstamm(KundenID)
@@ -156,4 +139,24 @@ ALTER TABLE Gewerblicher_Kunde_zu_Ansprechpartner
 ALTER TABLE Rechnung
     ADD CONSTRAINT FOREIGN KEY (BestellungsID) REFERENCES bestellung(BestellungsID)
         ON DELETE RESTRICT
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE;
+
+ALTER TABLE Produktionsmaterial
+    ADD CONSTRAINT FOREIGN KEY(UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe(UntergruppeID,ObergruppeID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Hilfsstoffe
+    ADD CONSTRAINT FOREIGN KEY(UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe(UntergruppeID,ObergruppeID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE produktvorlage
+    ADD CONSTRAINT FOREIGN KEY(UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe(UntergruppeID,ObergruppeID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE lieferantenstamm_zu_materialstamm
+    ADD CONSTRAINT FOREIGN KEY(UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe(UntergruppeID,ObergruppeID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

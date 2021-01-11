@@ -33,6 +33,10 @@ INSERT INTO produktstamm(ProduktID, `2te_Wahl`, Saison, Bezeichnung, Beschreibun
 INSERT INTO hose(ProduktID, EU_Groeße, Schrittlänge, Bundumfang, Gesäßweite) VALUE
 ('1183', '36', '34','91', '96');
 
+Insert Into obergruppe_untergruppe(obergruppeId, untergruppeId) VALUES
+(60,15), (01,138);
+
+
 INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe) VALUE
 (60, 15, 01, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 120');
 
@@ -41,18 +45,21 @@ INSERT INTO qualitaetsmerkmal(MerkmalID, GOTS, Vegan) VALUE
 
 #TODO: Noch überarbeiten
 INSERT INTO produktionsmaterial(ObergruppeID, UntergruppeID, FarbID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe, MerkmalID) VALUE
-(60, 15, 01, 2000, 'Nordrhein-Westfalen', 'Stoff', '97% Baumwolle 3% Elasthan', 1);
+(01, 138, 01, 2000, 'Nordrhein-Westfalen', 'Stoff', '97% Baumwolle 3% Elasthan', 1);
 
-INSERT INTO produktvorlage(ProduktID, ObergruppeID, UntergruppeID, Verbrauchsmenge, Materialkosten) VALUE
-('1183',60, 15, 150, 0.09);
+INSERT INTO produktvorlage(ProduktID, ObergruppeID, UntergruppeID, Verbrauchsmenge, Materialkosten) VALUES
+('1183',60, 15, 150, 0.09),
+(1183,01,138,15,1450);
+
 
 #Produktbestandteile Aufrufen
 SELECT produktstamm.ProduktID as "ProduktID", produktstamm.Beschreibung, h.Menge as "Hilfstoff Menge", h.Bezeichnung_Obergruppe as "Obergruppe", h.Bezeichnung_Untergruppe as "Untergruppe",
        pm.Menge as "Produktionsmaterial Menge", pm.Bezeichnung_Obergruppe, pm.Bezeichnung_Untergruppe
 From produktstamm
 INNER JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
-INNER JOIN hilfsstoffe h on p.UntergruppeID = h.UntergruppeID and p.ObergruppeID = h.ObergruppeID
-INNER JOIN produktionsmaterial pm on p.UntergruppeID = pm.UntergruppeID and p.ObergruppeID = pm.ObergruppeID
+Inner Join obergruppe_untergruppe ou on p.ObergruppeID = ou.ObergruppeID and p.UntergruppeID = ou.UntergruppeID
+INNER JOIN hilfsstoffe h on ou.ObergruppeID = h.ObergruppeID and ou.UntergruppeID = h.UntergruppeID
+INNER JOIN produktionsmaterial pm on ou.ObergruppeID = pm.ObergruppeID and ou.UntergruppeID = pm.UntergruppeID
 WHERE produktstamm.Bezeichnung = 'Bettina';
 
 #Lieferanten erstellen
@@ -142,3 +149,4 @@ INNER JOIN mitarbeiter_zu_fertigungsauftrag mzf on f.FaNr = mzf.FaNr
 INNER JOIN personalstamm p2 on mzf.PersonalID = p2.PersonalID
 WHERE b.BestellungsID = 1;
 
+#Abfrage

@@ -239,7 +239,7 @@ CREATE TABLE Produktvorlage
     UntergruppeID Integer,
     Verbrauchsmenge DECIMAL(9,2),
     Materialkosten DECIMAL(9,2),
-    PRIMARY KEY (ProduktID)
+    PRIMARY KEY (ProduktID,ObergruppeID,UntergruppeID)
 );
 
 DROP TABLE IF EXISTS Qualitaetsmerkmal;
@@ -293,4 +293,13 @@ CREATE TABLE GEWERBLICHER_KUNDE_zu_Ansprechpartner
     Nachname VARCHAR(255),
     PRIMARY KEY (KundenID,Vorname,Nachname)
 
+);
+
+Drop table if exists Obergruppe_Untergruppe
+Create table Obergruppe_Untergruppe
+(
+    ObergruppeID INT NOT NULL ,
+    UntergruppeID INT NOT NULL ,
+
+    Primary Key (UntergruppeID,ObergruppeID)
 );

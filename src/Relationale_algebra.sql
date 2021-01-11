@@ -51,16 +51,20 @@ INSERT INTO produktvorlage(ProduktID, ObergruppeID, UntergruppeID, Verbrauchsmen
 ('1183',60, 15, 150, 0.09),
 (1183,01,138,15,1450);
 
-
 #Produktbestandteile Aufrufen
-SELECT produktstamm.ProduktID as "ProduktID", produktstamm.Beschreibung, h.Menge as "Hilfstoff Menge", h.Bezeichnung_Obergruppe as "Obergruppe", h.Bezeichnung_Untergruppe as "Untergruppe",
-       pm.Menge as "Produktionsmaterial Menge", pm.Bezeichnung_Obergruppe, pm.Bezeichnung_Untergruppe
-From produktstamm
-INNER JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
-Inner Join obergruppe_untergruppe ou on p.ObergruppeID = ou.ObergruppeID and p.UntergruppeID = ou.UntergruppeID
-INNER JOIN hilfsstoffe h on ou.ObergruppeID = h.ObergruppeID and ou.UntergruppeID = h.UntergruppeID
-INNER JOIN produktionsmaterial pm on ou.ObergruppeID = pm.ObergruppeID and ou.UntergruppeID = pm.UntergruppeID
-WHERE produktstamm.Bezeichnung = 'Bettina';
+(SELECT produktstamm.ProduktID as "ProduktID", produktstamm.Beschreibung,
+       p.Verbrauchsmenge as "Produktionsmaterial Menge", pm.Bezeichnung_Obergruppe, pm.Bezeichnung_Untergruppe
+       from produktstamm
+JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
+JOIN produktionsmaterial pm on p.ObergruppeID = pm.ObergruppeID and p.UntergruppeID = pm.UntergruppeID
+WHERE produktstamm.Bezeichnung = 'Bettina')
+Union
+(SELECT produktstamm.ProduktID as "ProduktID", produktstamm.Beschreibung, p.Verbrauchsmenge as "Hilfstoff Menge", h.Bezeichnung_Obergruppe as "Obergruppe", h.Bezeichnung_Untergruppe as "Untergruppe"
+from produktstamm
+         JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
+         JOIN hilfsstoffe h on p.ObergruppeID = h.ObergruppeID and p.UntergruppeID = h.UntergruppeID
+WHERE produktstamm.Bezeichnung = 'Bettina');
+
 
 #Lieferanten erstellen
 INSERT INTO lieferantenstamm(LieferantenID, Firmenname, Ländercode, Straße, Hausnummer,
@@ -72,8 +76,10 @@ INSERT INTO lieferanten_zu_produktstamm(LieferantenID, ProduktID, Menge) VALUES
 ('L1234', '1183', 150.2),
 ('L1235','1183',110);
 
-INSERT INTO lieferantenstamm_zu_materialstamm(LieferantenID, ObergruppeID, UntergruppeID, Menge) VALUE
-('L1234', 60, 15, 120.4);
+INSERT INTO lieferantenstamm_zu_materialstamm(LieferantenID, ObergruppeID, UntergruppeID, Menge) VALUES
+('L1234', 60, 15, 120.4),
+('L1234', 01, 138, 120.4);
+
 
 #gelieferte Menge an Produkt XY
 SELECT l.Firmenname, p.Bezeichnung, lzp.Menge
@@ -89,7 +95,7 @@ INNER JOIN lieferantenstamm_zu_materialstamm lzm on l.LieferantenID = lzm.Liefer
 INNER JOIN hilfsstoffe h on lzm.ObergruppeID = h.ObergruppeID AND lzm.UntergruppeID = h.UntergruppeID
 WHERE h.Bezeichnung_Obergruppe = 'Nähgarn';
 
-
+#gelieferte Menge an Produktionsmaterial XY
 SELECT l.Firmenname, pm.Bezeichnung_Obergruppe, pm.Bezeichnung_Untergruppe, lzm.Menge
 FROM lieferantenstamm l
          INNER JOIN lieferantenstamm_zu_materialstamm lzm on l.LieferantenID = lzm.LieferantenID

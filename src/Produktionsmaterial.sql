@@ -11,7 +11,6 @@ CREATE TABLE Produktionsmaterial
     Ursprungsland VARCHAR (255),
     Bezeichnung_Obergruppe VARCHAR (255),
     Bezeichnung_Untergruppe VARCHAR (255),
-
     MerkmalID INT,
     Primary Key (UntergruppeID,ObergruppeID)
 

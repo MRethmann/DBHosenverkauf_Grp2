@@ -18,7 +18,7 @@ WHERE KUNDENSTAMM.KundenID = 'K123456789';
 (
     SELECT produktstamm.ProduktID as "ProduktID",
            produktstamm.Beschreibung,
-           p.Verbrauchsmenge      as "Produktionsmaterial Menge",
+           p.Verbrauchsmenge      as "Menge",
            pm.Bezeichnung_Obergruppe,
            pm.Bezeichnung_Untergruppe
     FROM produktstamm

@@ -18,5 +18,7 @@ CREATE TABLE Lieferantenstamm
     PRIMARY KEY (LieferantenID)
 );
 
+#### +++++ ####
+
 
 

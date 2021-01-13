@@ -24,3 +24,5 @@ ALTER TABLE Hilfsstoffe
     ADD CONSTRAINT FOREIGN KEY (BestandteilID) REFERENCES Hilfsstoffe (UntergruppeID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
+
+#### +++++ ####

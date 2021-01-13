@@ -23,6 +23,8 @@ ALTER TABLE Personalstamm
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
+#### +++++ ####
+
 
 
 

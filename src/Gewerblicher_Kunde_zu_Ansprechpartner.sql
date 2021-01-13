@@ -1,17 +1,18 @@
 USE HOSENFABRIK;
 
-DROP TABLE IF EXISTS GEWERBLICHER_KUNDE_zu_Ansprechpartner;
-
-CREATE TABLE GEWERBLICHER_KUNDE_zu_Ansprechpartner
-
+DROP TABLE IF EXISTS Gewerblicher_Kunde_zu_Ansprechpartner;
+CREATE TABLE Gewerblicher_Kunde_zu_Ansprechpartner
 (
-    KundenID CHAR(10) NOT NULL,
-    Vorname VARCHAR(255),
-    Nachname VARCHAR(255),
-    PRIMARY KEY (KundenID,Vorname,Nachname)
+    KundenID    CHAR(10) NOT NULL,
+    Vorname     VARCHAR(255),
+    Nachname    VARCHAR(255),
 
+    PRIMARY KEY (KundenID,Vorname,Nachname)
 );
-ALTER TABLE GEWERBLICHER_KUNDE_zu_Ansprechpartner
-    ADD CONSTRAINT FOREIGN KEY(KundenID) REFERENCES Gewerblicher_kunde(KundenID)
+
+ALTER TABLE Gewerblicher_Kunde_zu_Ansprechpartner
+    ADD CONSTRAINT FOREIGN KEY (KundenID) REFERENCES Gewerblicher_Kunde (KundenID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
+
+#### +++++ ####

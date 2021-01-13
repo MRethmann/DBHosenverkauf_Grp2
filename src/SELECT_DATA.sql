@@ -86,3 +86,9 @@ From Fertigungsauftrag f
          INNER JOIN mitarbeiter_zu_fertigungsauftrag mzf on f.FaNr = mzf.FaNr
          INNER JOIN personalstamm p2 on mzf.PersonalID = p2.PersonalID
 WHERE b.BestellungsID = 1;
+
+#Abfrage der Ansprechpartner einer Firma
+SELECT Nachname, Vorname
+FROM Gewerblicher_Kunde_zu_Ansprechpartner GA
+JOIN Gewerblicher_Kunde GK ON GA.KundenID = GK.KundenID
+WHERE GK.Firmenname = '';

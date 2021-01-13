@@ -1,9 +1,12 @@
 USE Hosenfabrik;
 
-DROP TABLE IF EXISTS KUNDENSTAMM;
-CREATE TABLE KUNDENSTAMM
+DROP TABLE IF EXISTS Kundenstamm;
+CREATE TABLE Kundenstamm
 (
-    KundenID Char(10) NOT NULL,
-    Umsatz DECIMAL(9,2),
+    KundenID    CHAR(10) NOT NULL,
+    Umsatz      DECIMAL(9,2),
+
     PRIMARY KEY (KundenID)
 );
+
+#### +++++ ####

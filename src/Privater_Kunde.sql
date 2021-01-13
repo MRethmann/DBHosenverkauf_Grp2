@@ -1,17 +1,18 @@
 USE hosenfabrik;
 
-DROP TABLE IF EXISTS PRIVATER_KUNDE;
-
-CREATE TABLE PRIVATER_KUNDE
-
+DROP TABLE IF EXISTS Privater_Kunde;
+CREATE TABLE Privater_Kunde
 (
-    KundenID CHAR(10),
-    Vorname VARCHAR(255),
-    Nachname VARCHAR(255),
-    PRIMARY KEY (KundenID)
+    KundenID    CHAR(10) NOT NULL,
+    Vorname     VARCHAR(255),
+    Nachname    VARCHAR(255),
 
+    PRIMARY KEY (KundenID)
 );
-ALTER TABLE PRIVATER_KUNDE
-    ADD CONSTRAINT FOREIGN KEY(KundenID) REFERENCES Kundenstamm(KundenID)
+
+ALTER TABLE Privater_Kunde
+    ADD CONSTRAINT FOREIGN KEY (KundenID) REFERENCES Kundenstamm (KundenID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
+
+#### +++++ ####

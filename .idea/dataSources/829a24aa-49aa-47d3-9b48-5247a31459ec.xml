@@ -1279,44 +1279,40 @@ Nachname</ColNames>
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="402" parent="340" name="Menge">
+    <column id="402" parent="340" name="BestandteilID">
       <Position>4</Position>
+      <DataType>int(11)|0s</DataType>
+    </column>
+    <column id="403" parent="340" name="Menge">
+      <Position>5</Position>
       <DataType>decimal(9,2 digit)|0s</DataType>
     </column>
-    <column id="403" parent="340" name="Ursprungsland">
-      <Position>5</Position>
-      <DataType>varchar(255)|0s</DataType>
-    </column>
-    <column id="404" parent="340" name="Bezeichnung_Obergruppe">
+    <column id="404" parent="340" name="Ursprungsland">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="405" parent="340" name="Bezeichnung_Untergruppe">
+    <column id="405" parent="340" name="Bezeichnung_Obergruppe">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <index id="406" parent="340" name="FarbID">
-      <ColNames>FarbID</ColNames>
+    <column id="406" parent="340" name="Bezeichnung_Untergruppe">
+      <Position>8</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <index id="407" parent="340" name="BestandteilID">
+      <ColNames>BestandteilID</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="407" parent="340" name="PRIMARY">
+    <key id="408" parent="340" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>UntergruppeID
 ObergruppeID</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="408" parent="340" name="hilfsstoffe_ibfk_2">
-      <ColNames>UntergruppeID
-ObergruppeID</ColNames>
-      <RefTableName>Obergruppe_Untergruppe</RefTableName>
-      <RefColNames>UntergruppeID
-ObergruppeID</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-    </foreign-key>
     <foreign-key id="409" parent="340" name="hilfsstoffe_ibfk_1">
-      <ColNames>FarbID</ColNames>
-      <RefTableName>Farbe</RefTableName>
-      <RefColNames>FarbID</RefColNames>
+      <ColNames>BestandteilID</ColNames>
+      <RefTableName>Hilfsstoffe</RefTableName>
+      <RefColNames>UntergruppeID</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="410" parent="341" name="ProduktID">

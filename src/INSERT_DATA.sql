@@ -16,31 +16,70 @@ INSERT INTO telefonnummern(ReferenzKunde, ReferenzPersonal, ReferenzLieferant, T
 #Produkt hinzufügen
 INSERT INTO farbe(farbid, farbe) VALUES
 (01, 'Anthrazit'),
-(04, 'Marine');
+(04, 'Marine'),
+(27, 'Bordeaux ');
 
 INSERT INTO produktstamm(ProduktID, `2te_Wahl`, Saison, Bezeichnung, Beschreibung, Menge, Preis, FarbID) VALUES
 ('1183', false, 'FrSo', 'Bettina', 'Damenhose mit Komforttaille', 30, 89.99, 04),
-('1159B', false, 'FrSo', 'Ina', 'Damenhose mit Komforttaille', 30, 89.99, 04);
+('11591B', false, 'FrSo', 'Alina', 'Röhrenjeans', 30, 89.99, 27);
 
-INSERT INTO hose(ProduktID, EU_Groeße, Schrittlänge, Bundumfang, Gesäßweite) VALUE
-('1183', '36', '34','91', '96');
+INSERT INTO hose(ProduktID, EU_Groeße, Schrittlänge, Bundumfang) VALUES
+('1183', '36', '34','91'),
+('1183', '38', '34', '96.5'),
+('1183', '40', '34', '101'),
+('1183', '42', '34', '106.5'),
+('11591B', '36', '34','91'),
+('11591B', '38', '34', '96.5'),
+('11591B', '40', '34', '101'),
+('11591B', '42', '34', '106.5');
 
 Insert Into obergruppe_untergruppe(obergruppeId, untergruppeId) VALUES
-(60,15), (01,138);
+(60,00), (60,02), (60,06), (60,15),
+(61,02), (61,10), (63,04), (66,11), (66,21),
+(67,13),(67,28), (67,29), (80,02), (84,00), (01,138), (01,52261);
 
-INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe) VALUE
-(60, 15, 01, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 120');
+INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, BestandteilID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe) VALUE
+(60, 00, 01, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 105'),
+(60, 02, 04, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 110'),
+(60, 06, 04, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 115'),
+(60, 15, 01, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 120'),
+(61, 02, 01, null, 12.5, 'Niedersachsen','Vlieseline','Stretch Vlieseline 100'),
+(61, 10, 04, null, 12.5, 'Niedersachsen','Vlieseline','Stretch Vlieseline 200'),
+(63, 04, 04, null, 12.5, 'Niedersachsen','RV','Metall RV mit Stern'),
+(66, 11, 01, null, 12.5, 'Bayern','Etikett', 'Webetikett Bloomers'),
+(66, 21, 01, null, 12.5, 'Bayern','Etikett','Kartonage Etikett'),
+(67, 13, 01, null, 12.5, 'Bayern','Sonstiges','Unterlegscheibe'),
+(67, 28, 01, null, 12.5, 'Bayern','Sonstiges','Patentkn. Blume'),
+(67, 29, 01, null, 12.5, 'Bayern','Sonstiges','Nieten Blume'),
+(80, 02, 01, null, 12.5, 'Bremen','Rasant','Rasant 120'),
+(84, 00, 01, null, 12.5, 'Bremen','Futter','Taschenfutter BV');
 
 INSERT INTO qualitaetsmerkmal(MerkmalID, GOTS, Vegan) VALUE
 (1, true, false);
 
 #TODO: Noch überarbeiten
 INSERT INTO produktionsmaterial(ObergruppeID, UntergruppeID, FarbID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe, MerkmalID) VALUE
-(01, 138, 01, 2000, 'Nordrhein-Westfalen', 'Stoff', '97% Baumwolle 3% Elasthan', 1);
+(01, 138, 01, 2000, 'Nordrhein-Westfalen', 'Stoff', '97% Baumwolle 3% Elasthan', 1),
+(01, 52261, 27, 2000, 'Nordrhein-Westfalen', 'Stoff', '97% Baumwolle 3% Elasthan', 1);
 
 INSERT INTO produktvorlage(ProduktID, ObergruppeID, UntergruppeID, Verbrauchsmenge, Materialkosten) VALUES
 ('1183',60, 15, 150, 0.09),
-(1183,01,138,15,1450);
+('1183',01,138,15,14.50),
+('11591B', 01, 52261, 1.38, 4.55),
+('11591B', 60, 00, 90, 0.2),
+('11591B', 60, 02, 30, 0.02),
+('11591B', 60, 06, 1.38, 4.55),
+('11591B', 60, 15, 150, 0.09),
+('11591B', 61, 02, 0.1, 0.03),
+('11591B', 61, 10, 0.15, 0.08),
+('11591B', 63, 04, 1, 0.23),
+('11591B', 66, 11, 1, 0.05),
+('11591B', 66, 21, 1, 0.01),
+('11591B', 67, 13, 1, 0.01),
+('11591B', 67, 28, 1, 0.19),
+('11591B', 67, 29, 4, 0.26),
+('11591B', 80, 02, 150, 0.11),
+('11591B', 84, 00, 0.15, 0.31);
 
 #Lieferanten erstellen
 INSERT INTO lieferantenstamm(LieferantenID, Firmenname, Ländercode, Straße, Hausnummer,
@@ -53,8 +92,22 @@ INSERT INTO lieferanten_zu_produktstamm(LieferantenID, ProduktID, Menge) VALUES
 ('L1235','1183',110);
 
 INSERT INTO lieferantenstamm_zu_materialstamm(LieferantenID, ObergruppeID, UntergruppeID, Menge) VALUES
-('L1234', 60, 15, 120.4),
-('L1234', 01, 138, 120.4);
+('L1234',01,138,15),
+('L1234', 01, 52261, 5),
+('L1234', 60, 00, 01, 102.5),
+('L1234', 60, 02, 04, 50.5),
+('L1235', 60, 06, 04, 12.5),
+('L1235', 60, 15, 01, 150.5),
+('L1235', 61, 02, 01, 12.5),
+('L1234', 61, 10, 04, 12.5),
+('L1234', 63, 04, 04, 12.5),
+('L1234', 66, 11, 01, 12.5),
+('L1234', 66, 21, 01, 12.5),
+('L1235', 67, 13, 01, 12.5),
+('L1234', 67, 28, 01, 12.5),
+('L1235', 67, 29, 01, 12.5),
+('L1234', 80, 02, 01, 123.5),
+('L1234', 84, 00, 01, 12.5);
 
 #Personal hinzufügen
 INSERT INTO personalstamm(personalid, nachname, vorname, straße, hausnummer,

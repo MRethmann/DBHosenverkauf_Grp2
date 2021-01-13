@@ -24,7 +24,7 @@ WHERE KUNDENSTAMM.KundenID = 'K123456789';
     FROM produktstamm
              JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
              JOIN produktionsmaterial pm on p.ObergruppeID = pm.ObergruppeID and p.UntergruppeID = pm.UntergruppeID
-    WHERE produktstamm.Bezeichnung = 'Bettina'
+    WHERE produktstamm.Bezeichnung = 'Alina'
 )
 UNION
 (
@@ -36,7 +36,7 @@ UNION
     FROM produktstamm
           JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
           JOIN hilfsstoffe h on p.ObergruppeID = h.ObergruppeID and p.UntergruppeID = h.UntergruppeID
-    WHERE produktstamm.Bezeichnung = 'Bettina'
+    WHERE produktstamm.Bezeichnung = 'Alina'
 );
 
 #gelieferte Menge an Produkt XY
@@ -74,7 +74,7 @@ SELECT Nachname,
 FROM personalstamm
 WHERE Vorgesetzter = (SELECT PersonalID FROM personalstamm WHERE Vorname = 'Marie' AND Nachname = 'Musterfrau');
 
-#Abfrage der dem Fa zugeteilten Personal und der zu Produzierenden Menge von Produkt XY
+#Abfrage der dem FA zugeteilten Personal und der zu produzierenden Menge von Produkt XY
 SELECT p.Bezeichnung,
        b.Menge,
        p2.Vorname,

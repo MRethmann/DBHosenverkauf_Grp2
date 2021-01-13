@@ -94,28 +94,28 @@ INSERT INTO lieferanten_zu_produktstamm(LieferantenID, ProduktID, Menge) VALUES
 INSERT INTO lieferantenstamm_zu_materialstamm(LieferantenID, ObergruppeID, UntergruppeID, Menge) VALUES
 ('L1234',01,138,15),
 ('L1234', 01, 52261, 5),
-('L1234', 60, 00, 01, 102.5),
-('L1234', 60, 02, 04, 50.5),
-('L1235', 60, 06, 04, 12.5),
-('L1235', 60, 15, 01, 150.5),
-('L1235', 61, 02, 01, 12.5),
-('L1234', 61, 10, 04, 12.5),
-('L1234', 63, 04, 04, 12.5),
-('L1234', 66, 11, 01, 12.5),
-('L1234', 66, 21, 01, 12.5),
-('L1235', 67, 13, 01, 12.5),
-('L1234', 67, 28, 01, 12.5),
-('L1235', 67, 29, 01, 12.5),
-('L1234', 80, 02, 01, 123.5),
-('L1234', 84, 00, 01, 12.5);
+('L1234', 60, 00, 102.5),
+('L1234', 60, 02, 50.5),
+('L1235', 60, 06, 12.5),
+('L1235', 60, 15, 150.5),
+('L1235', 61, 02, 12.5),
+('L1234', 61, 10, 12.5),
+('L1234', 63, 04, 12.5),
+('L1234', 66, 11, 12.5),
+('L1234', 66, 21, 12.5),
+('L1235', 67, 13, 12.5),
+('L1234', 67, 28, 12.5),
+('L1235', 67, 29, 12.5),
+('L1234', 80, 02, 123.5),
+('L1234', 84, 00, 12.5);
 
 #Personal hinzufügen
-INSERT INTO personalstamm(personalid, nachname, vorname, straße, hausnummer,
+INSERT INTO personalstamm(personalid, Vorname, nachname, straße, hausnummer,
                           ort, plz, ländercode, mtag, vorgesetzter, vtag, firmenname) VALUES
-('P123456789', 'Musterfrau', 'Lisa', 'Musterstraße', '74', 'Halalburg', '12345', 'DEU', true, null, false, null),
-('P123456790', 'Musterfrau', 'Marie', 'Musterstraße', '74', 'Haramburg', '12346', 'DEU', true, null, false, null),
-('P123456791', 'Mustermann', 'Max', 'Musterstraße', '74', 'Halalburg', '12345', 'DEU', true, 'P123456790', false, null),
-('P123456792', 'Benten', 'Patrick', 'Musterstraße', '78', 'Eisten', '12345', 'DEU', false, null, true, 'Muster GBR');
+('P123456789', 'Lisa', 'Musterfrau', 'Musterstraße', '74', 'Halalburg', '12345', 'DEU', true, null, false, null),
+('P123456790', 'Marie', 'Musterfrau', 'Musterstraße', '74', 'Haramburg', '12346', 'DEU', true, null, false, null),
+('P123456791', 'Max', 'Mustermann', 'Musterstraße', '74', 'Halalburg', '12345', 'DEU', true, 'P123456790', false, null),
+('P123456792', 'Patrick', 'Benten', 'Musterstraße', '78', 'Eisten', '12345', 'DEU', false, null, true, 'Muster GBR');
 
 INSERT INTO personalstamm_buchhaltung (PersonalID, Vollmacht) VALUE
 ('P123456789', 'PPA');
@@ -131,17 +131,17 @@ INSERT INTO Bestellung(PersonalID, KundenID, Bestelldatum) VALUE
 ('P123456792','K123456789', '2021-01-10');
 
 #Bestellposition erstellen
-INSERT INTO bestellposition(BestellungsID, ProduktID, Positionsnummer, Menge, Einzelpreis) VALUES
+INSERT INTO Bestellposition(BestellungsID, ProduktID, Positionsnummer, Menge, Einzelpreis) VALUES
 (1, '1183', 1, 300, 32),
-(1, '1159B', 2, 200, 35);
+(1, '11591B', 2, 200, 35);
 
 #Fertigungsauftrag erstellen
-INSERT INTO fertigungsauftrag(produktid, bestellungsid, abgeschlossen) VALUES
+INSERT INTO Fertigungsauftrag(produktid, bestellungsid, abgeschlossen) VALUES
 ('1183', 1, false),
-('1159B', 1, false);
+('11591B', 1, false);
 
 #Rechnung erstellen
-INSERT INTO rechnung(BestellungsID, KOSTEN, ZAHLUNGSFRIST, ABGESCHLOSSEN) VALUE
+INSERT INTO Rechnung(BestellungsID, KOSTEN, ZAHLUNGSFRIST, ABGESCHLOSSEN) VALUE
 (1, (SELECT SUM(Gesamtbetrag) FROM bestellposition WHERE BestellungsID = 1), '2021-01-11', false);
 
 #Mitarbeiter einem Fertigungsauftrag zuweisen

@@ -80,23 +80,23 @@ ALTER TABLE Mitarbeiter_zu_Fertigungsauftrag
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Obergruppe_Untergruppe
-    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Produktionsmaterial (UntergruppeID,ObergruppeID)
+ALTER TABLE Produktionsmaterial
+    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe (UntergruppeID,ObergruppeID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Obergruppe_Untergruppe
-    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Hilfsstoffe (UntergruppeID,ObergruppeID)
+ALTER TABLE Hilfsstoffe
+    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe (UntergruppeID,ObergruppeID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Obergruppe_Untergruppe
-    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Produktvorlage (UntergruppeID,ObergruppeID)
+ALTER TABLE Produktvorlage
+    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe (UntergruppeID, ObergruppeID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
-ALTER TABLE Obergruppe_Untergruppe
-    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Lieferantenstamm_zu_materialstamm (UntergruppeID,ObergruppeID)
+ALTER TABLE Lieferantenstamm_zu_Materialstamm
+    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe (UntergruppeID, ObergruppeID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 

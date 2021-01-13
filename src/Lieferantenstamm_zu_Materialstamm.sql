@@ -16,4 +16,9 @@ ALTER TABLE Lieferantenstamm_zu_Materialstamm
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
+ALTER TABLE Lieferantenstamm_zu_Materialstamm
+    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe (UntergruppeID, ObergruppeID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
 #### +++++ ####

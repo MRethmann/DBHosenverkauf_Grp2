@@ -25,4 +25,9 @@ ALTER TABLE Produktionsmaterial
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
+ALTER TABLE Produktionsmaterial
+    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe (UntergruppeID,ObergruppeID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
 #### +++++ ####

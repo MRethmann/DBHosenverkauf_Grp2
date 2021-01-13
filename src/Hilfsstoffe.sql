@@ -25,4 +25,9 @@ ALTER TABLE Hilfsstoffe
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
+ALTER TABLE Hilfsstoffe
+    ADD CONSTRAINT FOREIGN KEY (UntergruppeID,ObergruppeID) REFERENCES Obergruppe_Untergruppe (UntergruppeID,ObergruppeID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
 #### +++++ ####

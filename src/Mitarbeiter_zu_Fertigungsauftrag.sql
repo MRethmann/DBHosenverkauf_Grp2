@@ -18,7 +18,3 @@ ALTER TABLE Mitarbeiter_zu_Fertigungsauftrag
     ADD CONSTRAINT FOREIGN KEY(PersonalID) REFERENCES personalstamm(PersonalID)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
-ALTER TABLE Mitarbeiter_zu_Fertigungsauftrag
-    ADD CONSTRAINT FOREIGN KEY(PersonalID) REFERENCES Personalstamm(PersonalID)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE;

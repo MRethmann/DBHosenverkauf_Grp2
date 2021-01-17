@@ -74,13 +74,13 @@ SELECT Nachname,
 FROM personalstamm
 WHERE Vorgesetzter = (SELECT PersonalID FROM personalstamm WHERE Vorname = 'Marie' AND Nachname = 'Musterfrau');
 
-#Abfrage der dem FA zugeteilten Personal und der zu produzierenden Menge von Produkt XY
+#Abfrage des dem FA zugeteilten Personal und der zu produzierenden Menge von Produkt XY
 SELECT p.Bezeichnung,
        b.Menge,
        p2.Vorname,
        p2.Nachname,
        f.abgeschlossen
-From Fertigungsauftrag f
+FROM Fertigungsauftrag f
          INNER JOIN produktstamm p on f.ProduktID = p.ProduktID
          INNER JOIN bestellposition b on f.BestellungsID = b.BestellungsID and f.ProduktID = b.ProduktID
          INNER JOIN mitarbeiter_zu_fertigungsauftrag mzf on f.FaNr = mzf.FaNr
@@ -92,3 +92,38 @@ SELECT Nachname, Vorname
 FROM Gewerblicher_Kunde_zu_Ansprechpartner GA
 JOIN Gewerblicher_Kunde GK ON GA.KundenID = GK.KundenID
 WHERE GK.Firmenname = '';
+
+#Abfrage aller Bestellungen eines Kunden
+SELECT b.KundenID, b.BestellungsID, pk.Vorname, pk.Nachname, gk.Firmenname
+FROM Bestellung b
+LEFT OUTER JOIN Privater_Kunde pk on b.KundenID = pk.KundenID
+LEFT OUTER JOIN Gewerblicher_Kunde gk on b.KundenID = gk.KundenID
+WHERE b.KundenID = 'K0001';
+
+#Abfrage der Bestellpositionen einer Bestellung
+SELECT b.BestellungsID, bp.Positionsnummer, bp.ProduktID, bp.Menge, bp.Einzelpreis, bp.Gesamtbetrag
+FROM Bestellung b
+JOIN Bestellposition bp on b.BestellungsID = bp.BestellungsID
+WHERE b.BestellungsID = '2'
+ORDER BY Positionsnummer;
+
+#Abfrage aller Rechnungen eines Kunden
+SELECT b.KundenID, b.BestellungsID, r.RechnungsID, r.Kosten, r.Zahlungsfrist, pk.Vorname, pk.Nachname, gk.Firmenname
+FROM Kundenstamm k
+LEFT OUTER JOIN Privater_Kunde pk on k.KundenID = pk.KundenID
+LEFT OUTER JOIN Gewerblicher_Kunde gk on k.KundenID = gk.KundenID
+JOIN Bestellung b on k.KundenID = b.KundenID
+JOIN Rechnung r on b.BestellungsID = r.BestellungsID
+WHERE b.KundenID = 'K0001' AND r.Abgeschlossen = false;
+
+#Abfrage aller Telefonnummern eines Kunden
+SELECT k.KundenID, gk.Firmenname, pk.Vorname, pk.Nachname, t.Telefonnummer
+FROM Kundenstamm k
+LEFT OUTER JOIN Gewerblicher_Kunde gk on k.KundenID = gk.KundenID
+LEFT OUTER JOIN Privater_Kunde pk on k.KundenID = pk.KundenID
+INNER JOIN Telefonnummern t on k.KundenID = t.ReferenzKunde
+WHERE k.KundenID = 'K0001';
+
+SELECT * FROM Gewerblicher_Kunde;
+SELECT * FROM Privater_Kunde;
+SELECT * FROM Bestellung;

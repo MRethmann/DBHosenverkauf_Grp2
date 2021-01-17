@@ -1989,17 +1989,19 @@ ObergruppeID</RefColNames>
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="549" parent="359" name="Brundumfang">
+    <column id="549" parent="359" name="Bundumfang">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
     <column id="550" parent="359" name="Weite">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
     <key id="551" parent="359" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ProduktID</ColNames>
+      <ColNames>ProduktID
+Weite</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="552" parent="359" name="roecke_ibfk_1">

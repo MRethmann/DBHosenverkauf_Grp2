@@ -6,10 +6,10 @@ CREATE TABLE Roecke
     ProduktID       CHAR(10),
     EU_Groeße       VARCHAR(4),
     Laenge          INTEGER,
-    Brundumfang     INTEGER,
+    Bundumfang     INTEGER,
     Weite           INTEGER,
 
-    PRIMARY KEY (ProduktID)
+    PRIMARY KEY (ProduktID, Weite)
 );
 
 ALTER TABLE Roecke

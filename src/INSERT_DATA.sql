@@ -2,26 +2,43 @@ Use hosenfabrik;
 
 #Kunden hinzufügen
 INSERT INTO kundenstamm(kundenid, umsatz) VALUE
-('K123456789', 10000.00);
+('K0001', 10000.00),
+('K0002', 14000.00),
+('K0003', 25000.00),
+('K0004', 50000.00);
 
 INSERT INTO kundenstamm_zu_lieferadressen(KundenID, Straße, Hausnummer, Ort, PLZ, Laendercode) VALUE
-('K123456789', 'Musterstraße', '6', 'Musterstadt', '64352', 'DE');
+('K0001', 'Musterstraße', '6', 'Musterstadt', '64352', 'DE');
 
 INSERT INTO privater_kunde VALUE
-('K123456789', 'Max', 'Mustermann');
+('K0003', 'Max', 'Mustermann'),
+('K0001', 'Maurice', 'Rethmann'),
+('K0002', 'Nils', 'Lindemann');
+
+INSERT INTO Gewerblicher_Kunde VALUE
+('K0003', 'Musterfirma GmbH'),
+('K0004', 'Benten AG');
 
 INSERT INTO telefonnummern(ReferenzKunde, ReferenzPersonal, ReferenzLieferant, Telefonnummer) VALUE
-('K123456789', null, null, '018054646');
+('K0001', null, null, '01805464613'),
+('K0001', null, null, '01661246734');
 
 #Produkt hinzufügen
 INSERT INTO farbe(farbid, farbe) VALUES
 (01, 'Anthrazit'),
+(03, 'Ocker'),
 (04, 'Marine'),
+(05, 'Rubinrot'),
+(06, 'Bentenblau'),
+(24, 'Jeansblau'),
 (27, 'Bordeaux ');
 
 INSERT INTO produktstamm(ProduktID, `2te_Wahl`, Saison, Bezeichnung, Beschreibung, Menge, Preis, FarbID) VALUES
 ('1183', false, 'FrSo', 'Bettina', 'Damenhose mit Komforttaille', 30, 89.99, 04),
-('11591B', false, 'FrSo', 'Alina', 'Röhrenjeans', 30, 89.99, 27);
+('11591B', false, 'FrSo', 'Alina', 'Röhrenjeans', 30, 89.99, 27),
+('1132', false, 'FrSo', 'Jana', 'Rock', 25, 39.99, 01),
+('1138', false, 'FrSo', 'Johanna', 'Cortrock', 60, 59.99, 03),
+('1209', false, 'FrSo', 'Valentina', 'Jeansrock', 60, 49.99, 24);
 
 INSERT INTO hose(ProduktID, EU_Groeße, Schrittlänge, Bundumfang) VALUES
 ('1183', '36', '34','91'),
@@ -32,6 +49,14 @@ INSERT INTO hose(ProduktID, EU_Groeße, Schrittlänge, Bundumfang) VALUES
 ('11591B', '38', '34', '96.5'),
 ('11591B', '40', '34', '101'),
 ('11591B', '42', '34', '106.5');
+
+INSERT INTO Roecke(ProduktID, EU_Groeße, Laenge, Bundumfang, Weite) VALUES
+('1132', '36', '23', '91', '36'),
+('1132', '38', '23', '91', '38'),
+('1138', '36', '23', '91', '36'),
+('1138', '38', '23', '91', '38'),
+('1209', '36', '23', '91', '36'),
+('1209', '38', '23', '91', '38');
 
 Insert Into obergruppe_untergruppe(obergruppeId, untergruppeId) VALUES
 (60,00), (60,02), (60,06), (60,15),
@@ -128,12 +153,17 @@ INSERT INTO personalstamm_produktion(PersonalID, Schicht, Maschinenkenntnisse) V
 
 #Erstellung einer Bestellung
 INSERT INTO Bestellung(PersonalID, KundenID, Bestelldatum) VALUE
-('P123456792','K123456789', '2021-01-10');
+('P123456789','K0001', '2021-01-10'),
+('P123456789','K0003', '2021-01-16'),
+('P123456792','K0004', '2021-01-15');
 
 #Bestellposition erstellen
 INSERT INTO Bestellposition(BestellungsID, ProduktID, Positionsnummer, Menge, Einzelpreis) VALUES
 (1, '1183', 1, 300, 32),
-(1, '11591B', 2, 200, 35);
+(1, '11591B', 2, 200, 20),
+(2, '1183', 1, 5000, 50),
+(2, '11591B', 2, 7000, 60),
+(3, '1183', 1, 40000, 45);
 
 #Fertigungsauftrag erstellen
 INSERT INTO Fertigungsauftrag(produktid, bestellungsid, abgeschlossen) VALUES

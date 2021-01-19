@@ -62,7 +62,7 @@ INSERT INTO privater_kunde VALUE
 ('K0009', 'Maurice', 'Rethmann'),
 ('K0010', 'Nils', 'Lindemann');
 
-INSERT INTO Gewerblicher_Kunde VALUE
+INSERT INTO Gewerblicher_Kunde VALUES
 ('K0011', 'Hanekamp GmbH'),
 ('K0012', 'Rethmann GbR'),
 ('K0013', 'Meiners KG'),
@@ -73,6 +73,18 @@ INSERT INTO Gewerblicher_Kunde VALUE
 ('K0018', 'Hosenshop24 GmbH'),
 ('K0019', 'Hosen-Kaufen GmbH'),
 ('K0020', 'Benten AG');
+
+INSERT INTO Gewerblicher_Kunde_zu_Ansprechpartner(KundenID, Vorname, Nachname) VALUES
+('K0011', 'Albert', 'Johannson'),
+('K0012', 'Frank', 'Plaue'),
+('K0013', 'Mario', 'Schmidt'),
+('K0014', 'Maurice', 'Rethmann'),
+('K0015', 'Detlev', 'Meister'),
+('K0016', 'Dirk', 'Hanekamp'),
+('K0017', 'Max', 'Franke'),
+('K0018', 'Maria', 'Schmidt'),
+('K0019', 'Franziska', 'Steingröver'),
+('K0020', 'Sonja', 'Plagenstedt');
 
 INSERT INTO telefonnummern(ReferenzKunde, ReferenzPersonal, ReferenzLieferant, Telefonnummer) VALUE
 ('K0001', null, null, '01805464613'),
@@ -140,28 +152,6 @@ INSERT INTO Roecke(ProduktID, EU_Groeße, Laenge, Bundumfang, Weite) VALUES
 ('1209', '36', '23', '91', '36'),
 ('1209', '38', '23', '91', '38');
 
-Insert Into Obergruppe_Untergruppe(obergruppeid, untergruppeid, bezeichnung_obergruppe, bezeichnung_untergruppe) VALUES
-(60,00, 'Nähgarn','Kettelgarn Saba 105'),
-(60,02, 'Nähgarn','Kettelgarn Saba 110'),
-(60,06, 'Nähgarn','Kettelgarn Saba 115'),
-(60,09, 'Nähgarn', 'Kettelgarn Saba 120'),
-(60,15, 'Nähgarn','Faden'),
-(61,02, 'Vlieseline','Stretch 100'),
-(61,10, 'Vlieseline','Stretch 200'),
-(63,04, 'RV','Metall RV mit Stern'),
-(66,11, 'Etikett', 'Webetikett Bloomers'),
-(66,21, 'Etikett','Kartonage Etikett'),
-(67,13, 'Sonstiges','Unterlegscheibe'),
-(67,28, 'Sonstiges','Patentkn. Blume'),
-(67,29, 'Sonstiges','Nieten Blume'),
-(80,02, 'Rasant','Rasant 120'),
-(84,00, 'Futter','Taschenfutter BV'),
-(01,138, 'Stoff', '97% Baumwolle 3% Elasthan'),
-(01,52261, 'Stoff', '97% Baumwolle 3% Elasthan');
-
-SELECT * FROM obergruppe_untergruppe;
-SELECT * FROM untergruppe;
-SELECT * FROM obergruppe;
 
 INSERT INTO Obergruppe(ObergruppeID, Bezeichnung_Obergruppe) VALUES
 (60, 'Nähgarn'),
@@ -188,9 +178,6 @@ INSERT INTO Untergruppe(UntergruppeID, Bezeichnung_Untergruppe) VALUES
 (29, 'Nieten Blume'),
 (138, '97% Baumwolle 3% Elasthan'),
 (52261, '97% Baumwolle 3% Elasthan');
-
-SELECT * FROM Untergruppe;
-
 
 INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, BestandteilID, Menge, Ursprungsland) VALUES
 (60, 1, 01, null, 12.5, 'Baden-Württemberg'),

@@ -1,12 +1,10 @@
 Use Hosenfabrik;
 
 #Roten Faden finden
-Select o.Bezeichnung_Obergruppe,u.Bezeichnung_Untergruppe,h.menge,f.Farbe
+Select h.Bezeichnung_Obergruppe,h.Bezeichnung_Untergruppe,h.menge,f.Farbe
 From Hilfsstoffe h
         Inner Join Farbe F on h.FarbID = F.FarbID
-        Inner Join obergruppe o on h.ObergruppeID = o.ObergruppeID
-        Inner Join untergruppe u on h.UntergruppeID = u.UntergruppeID
-Where u.Bezeichnung_Untergruppe='Faden' AND f.Farbe='rot';
+Where h.Bezeichnung_Untergruppe='Faden' AND f.Farbe='rot';
 
 #Kunde abrufen
 SELECT Privater_Kunde.Vorname,
@@ -27,12 +25,10 @@ WHERE KUNDENSTAMM.KundenID = 'K0001';
     SELECT produktstamm.ProduktID as "ProduktID",
            produktstamm.Beschreibung,
            p.Verbrauchsmenge      as "Menge",
-           o.Bezeichnung_Obergruppe,
-           u.Bezeichnung_Untergruppe
+           pm.Bezeichnung_Obergruppe,
+           pm.Bezeichnung_Untergruppe
     FROM produktstamm
              JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
-             JOIN untergruppe u on p.UntergruppeID = u.UntergruppeID
-             JOIN obergruppe o on p.ObergruppeID = o.ObergruppeID
              JOIN produktionsmaterial pm on p.ObergruppeID = pm.ObergruppeID and p.UntergruppeID = pm.UntergruppeID
     WHERE produktstamm.Bezeichnung = 'Alina'
 )
@@ -41,12 +37,10 @@ UNION
     SELECT produktstamm.ProduktID as "ProduktID",
            produktstamm.Beschreibung,
            p.Verbrauchsmenge as "Hilfstoff Menge",
-           o.Bezeichnung_Obergruppe as "Obergruppe",
-           u.Bezeichnung_Untergruppe as "Untergruppe"
+           h.Bezeichnung_Obergruppe as "Obergruppe",
+           h.Bezeichnung_Untergruppe as "Untergruppe"
     FROM produktstamm
           JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
-          JOIN untergruppe u on p.UntergruppeID = u.UntergruppeID
-          JOIN obergruppe o on p.ObergruppeID = o.ObergruppeID
           JOIN hilfsstoffe h on p.ObergruppeID = h.ObergruppeID and p.UntergruppeID = h.UntergruppeID
     WHERE produktstamm.Bezeichnung = 'Alina'
 );
@@ -62,25 +56,21 @@ WHERE p.Bezeichnung = 'Bettina';
 
 #gelieferte Menge an Hilfstoff XY
 SELECT l.Firmenname,
-       o.Bezeichnung_Obergruppe,
-       u.Bezeichnung_Untergruppe,
+       h.Bezeichnung_Obergruppe,
+       h.Bezeichnung_Untergruppe,
        lzm.Menge
 FROM lieferantenstamm l
          INNER JOIN lieferantenstamm_zu_materialstamm lzm on l.LieferantenID = lzm.LieferantenID
-         INNER JOIN untergruppe u on lzm.UntergruppeID = u.UntergruppeID
-         INNER JOIN obergruppe o on lzm.ObergruppeID = o.ObergruppeID
          INNER JOIN hilfsstoffe h on lzm.ObergruppeID = h.ObergruppeID AND lzm.UntergruppeID = h.UntergruppeID
-WHERE o.Bezeichnung_Obergruppe = 'Nähgarn';
+WHERE h.Bezeichnung_Obergruppe = 'Nähgarn';
 
 #gelieferte Menge an Produktionsmaterial XY
 SELECT l.Firmenname,
-       o.Bezeichnung_Obergruppe,
-       u.Bezeichnung_Untergruppe,
+       pm.Bezeichnung_Obergruppe,
+       pm.Bezeichnung_Untergruppe,
        lzm.Menge
 FROM lieferantenstamm l
          INNER JOIN lieferantenstamm_zu_materialstamm lzm on l.LieferantenID = lzm.LieferantenID
-         INNER JOIN obergruppe o on lzm.ObergruppeID = o.ObergruppeID
-         INNER JOIN untergruppe u on lzm.UntergruppeID = u.UntergruppeID
          INNER JOIN produktionsmaterial pm on lzm.ObergruppeID = pm.ObergruppeID AND lzm.UntergruppeID = pm.UntergruppeID
 WHERE l.Firmenname = 'Muster GmbH';
 
@@ -140,4 +130,4 @@ LEFT OUTER JOIN Privater_Kunde pk on k.KundenID = pk.KundenID
 INNER JOIN Telefonnummern t on k.KundenID = t.ReferenzKunde
 WHERE k.KundenID = 'K0001';
 
-#:)
+

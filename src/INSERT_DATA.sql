@@ -5,23 +5,104 @@ INSERT INTO kundenstamm(kundenid, umsatz) VALUE
 ('K0001', 10000.00),
 ('K0002', 14000.00),
 ('K0003', 25000.00),
-('K0004', 50000.00);
+('K0004', 50000.00),
+('K0005', 10000.00),
+('K0006', 14000.00),
+('K0007', 25000.00),
+('K0008', 50000.00),
+('K0009', 10000.00),
+('K0010', 14000.00),
+('K0011', 25000.00),
+('K0012', 25000.00),
+('K0013', 50000.00),
+('K0014', 10000.00),
+('K0015', 14000.00),
+('K0016', 25000.00),
+('K0017', 25000.00),
+('K0018', 25000.00),
+('K0019', 25000.00),
+('K0020', 50000.00);
 
 INSERT INTO kundenstamm_zu_lieferadressen(KundenID, Straße, Hausnummer, Ort, PLZ, Laendercode) VALUE
-('K0001', 'Musterstraße', '6', 'Musterstadt', '64352', 'DE');
+('K0001', 'Vogelstraße', '7', 'Berlin', '31252', 'DE'),
+('K0002', 'Kaninchenweg', '12', 'Hamburg', '54123', 'DE'),
+('K0002', 'Löwenstraße', '55', 'Bremen', '83413', 'DE'),
+('K0003', 'Elefantenpättchen', '213', 'München', '71234', 'DE'),
+('K0003', 'Zum-Geparden', '2', 'Ibbenbüren', '21546', 'DE'),
+('K0004', 'Aaseewinkel', '89', 'Lingen', '02858', 'DE'),
+('K0005', 'Alstedder Straße', '70', 'Lingen', '27528', 'DE'),
+('K0006', 'Alpenstraße', '59', 'Gerste', '23151', 'DE'),
+('K0007', 'Am Friedhof', '22', 'Osnabrück', '23251', 'DE'),
+('K0008', 'Meisenweg', '54', 'Münster', '74823', 'DE'),
+('K0009', 'Michaelstraße', '34', 'Rostock', '92851', 'DE'),
+('K0010', 'Mauritiusstraße', '69', 'Cloppenburg', '65283', 'DE'),
+('K0011', 'Sandweg', '12', 'Oldenburg', '29571', 'DE'),
+('K0011', 'Sauerlandstraße', '8', 'Emsdetten', '23123', 'DE'),
+('K0012', 'Schürfweg', '4', 'Beckum', '51242', 'DE'),
+('K0012', 'Schubertstraße', '2', 'Bamberg', '24512', 'DE'),
+('K0013', 'Sperberweg', '99', 'Bielefeld', '85728', 'DE'),
+('K0014', 'Südstraße', '108', 'Nürnberg', '23515', 'DE'),
+('K0015', 'Sundern', '43', 'Frankfurt a. M.', '54231', 'DE'),
+('K0016', 'Stettiner Straße', '19', 'München', '71242', 'DE'),
+('K0017', 'Kranichweg', '42', 'Bad Tölz', '75312', 'DE'),
+('K0018', 'Kuckusweg', '18', 'Kempten', '34612', 'DE'),
+('K0019', 'Königsstraße', '109', 'Freiburg', '86921', 'DE'),
+('K0020', 'Kirchenstraße', '100', 'Freudenstadt', '54122', 'DE');
+
 
 INSERT INTO privater_kunde VALUE
-('K0003', 'Max', 'Mustermann'),
-('K0001', 'Maurice', 'Rethmann'),
-('K0002', 'Nils', 'Lindemann');
+('K0001', 'Max', 'Mustermann'),
+('K0002', 'Patrick', 'Benten'),
+('K0003', 'Luca', 'Schwarte'),
+('K0004', 'Dirk', 'Hanekamo'),
+('K0005', 'Mario', 'Schmidt'),
+('K0006', 'Fabrizio', 'Bolivera'),
+('K0007', 'Detlev', 'Meier'),
+('K0008', 'Tina', 'Meiners'),
+('K0009', 'Maurice', 'Rethmann'),
+('K0010', 'Nils', 'Lindemann');
 
 INSERT INTO Gewerblicher_Kunde VALUE
-('K0003', 'Musterfirma GmbH'),
-('K0004', 'Benten AG');
+('K0011', 'Hanekamp GmbH'),
+('K0012', 'Rethmann GbR'),
+('K0013', 'Meiners KG'),
+('K0014', 'Lindemann GmbH & Co. KG'),
+('K0015', 'Musterfirma GmbH'),
+('K0016', 'Austermann GmbH'),
+('K0017', 'Bolivera AG'),
+('K0018', 'Hosenshop24 GmbH'),
+('K0019', 'Hosen-Kaufen GmbH'),
+('K0020', 'Benten AG');
 
 INSERT INTO telefonnummern(ReferenzKunde, ReferenzPersonal, ReferenzLieferant, Telefonnummer) VALUE
 ('K0001', null, null, '01805464613'),
-('K0001', null, null, '01661246734');
+('K0002', null, null, '01805464143'),
+('K0003', null, null, '05451232131'),
+('K0004', null, null, '05412513213'),
+('K0004', null, null, '05231958242'),
+('K0005', null, null, '09284612742'),
+('K0005', null, null, '07912739512'),
+('K0006', null, null, '05628123324'),
+('K0007', null, null, '05912841728'),
+('K0008', null, null, '04751203129'),
+('K0009', null, null, '02193102921'),
+('K0009', null, null, '05734812923'),
+('K0010', null, null, '05128295322'),
+('K0010', null, null, '02213421433'),
+('K0011', null, null, '05123218412'),
+('K0012', null, null, '02192930421'),
+('K0013', null, null, '01281282000'),
+('K0014', null, null, '01239571292'),
+('K0015', null, null, '02921841755'),
+('K0015', null, null, '01271284812'),
+('K0016', null, null, '01291731988'),
+('K0016', null, null, '01231284893'),
+('K0017', null, null, '01238483739'),
+('K0018', null, null, '03334823842'),
+('K0019', null, null, '02812848312'),
+('K0020', null, null, '02493871393'),
+('K0020', null, null, '01284881083'),
+('K0001', null, null, '08481729492');
 
 #Produkt hinzufügen
 INSERT INTO farbe(farbid, farbe) VALUES

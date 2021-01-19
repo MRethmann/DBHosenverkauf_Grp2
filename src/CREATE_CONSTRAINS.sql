@@ -2,7 +2,7 @@ Use Hosenfabrik;
 
 ALTER TABLE Bestellposition
     ADD CONSTRAINT FOREIGN KEY (BestellungsID) REFERENCES Bestellung (BestellungsID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Bestellposition
@@ -16,8 +16,8 @@ ALTER TABLE Bestellung
         ON UPDATE CASCADE;
 
 ALTER TABLE Bestellung
-    ADD CONSTRAINT FOREIGN KEY (KundenID) REFERENCES Kundenstamm (KundenID)
-        ON DELETE RESTRICT
+    ADD CONSTRAINT FOREIGN KEY (KundenID) REFERENCES Kundenstamm (KundenID) #Wenn der Kunde verlangt, dass er aus der DB gelöscht wird
+        ON DELETE SET NULL
         ON UPDATE CASCADE;
 
 ALTER TABLE Fertigungsauftrag
@@ -27,12 +27,12 @@ ALTER TABLE Fertigungsauftrag
 
 ALTER TABLE Gewerblicher_Kunde
     ADD CONSTRAINT FOREIGN KEY (KundenID) REFERENCES Kundenstamm (KundenID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Gewerblicher_Kunde_zu_Ansprechpartner
     ADD CONSTRAINT FOREIGN KEY (KundenID) REFERENCES Gewerblicher_Kunde (KundenID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Hilfsstoffe
@@ -52,22 +52,22 @@ ALTER TABLE Hose
 
 ALTER TABLE Kundenstamm_zu_Lieferadressen
     ADD CONSTRAINT Foreign Key (KundenID) REFERENCES Kundenstamm (KundenID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Lieferantenstamm_zu_Materialstamm
     ADD CONSTRAINT FOREIGN KEY (LieferantenID) REFERENCES Lieferantenstamm (LieferantenID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Lieferanten_zu_Produktstamm
     ADD CONSTRAINT FOREIGN KEY (LieferantenID) REFERENCES Lieferantenstamm (LieferantenID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Lieferanten_zu_Produktstamm
     ADD CONSTRAINT FOREIGN KEY (ProduktID) REFERENCES Produktstamm (ProduktID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Mitarbeiter_zu_Fertigungsauftrag
@@ -102,27 +102,27 @@ ALTER TABLE Lieferantenstamm_zu_Materialstamm
 
 ALTER TABLE Personalstamm
     ADD CONSTRAINT FOREIGN KEY (Vorgesetzter) REFERENCES Personalstamm (PersonalID)
-        ON DELETE RESTRICT
+        ON DELETE SET NULL
         ON UPDATE CASCADE;
 
 ALTER TABLE Personalstamm_Buchhaltung
     ADD CONSTRAINT FOREIGN KEY (PersonalID) REFERENCES Personalstamm (PersonalID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Personalstamm_Produktion
     ADD CONSTRAINT FOREIGN KEY (PersonalID) REFERENCES Personalstamm (PersonalID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Personalstamm_Versand
     ADD CONSTRAINT FOREIGN KEY (PersonalID) REFERENCES Personalstamm (PersonalID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Privater_Kunde
     ADD CONSTRAINT FOREIGN KEY (KundenID) REFERENCES Kundenstamm (KundenID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Produktionsmaterial
@@ -157,15 +157,15 @@ ALTER TABLE Roecke
 
 ALTER TABLE Telefonnummern
     ADD CONSTRAINT FOREIGN KEY (ReferenzPersonal) REFERENCES Personalstamm (PersonalID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Telefonnummern
     ADD CONSTRAINT FOREIGN KEY (ReferenzLieferant) REFERENCES Lieferantenstamm (LieferantenID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;
 
 ALTER TABLE Telefonnummern
     ADD CONSTRAINT FOREIGN KEY (ReferenzKunde) REFERENCES Kundenstamm (KundenID)
-        ON DELETE RESTRICT
+        ON DELETE CASCADE
         ON UPDATE CASCADE;

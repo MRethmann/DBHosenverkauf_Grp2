@@ -18,7 +18,7 @@ FROM KUNDENSTAMM
          INNER JOIN privater_kunde ON KUNDENSTAMM.KundenID = privater_kunde.KundenID
          INNER JOIN telefonnummern ON KUNDENSTAMM.KundenID = telefonnummern.ReferenzKunde
          INNER JOIN kundenstamm_zu_lieferadressen kl on KUNDENSTAMM.KundenID = kl.KundenID
-WHERE KUNDENSTAMM.KundenID = 'K123456789';
+WHERE KUNDENSTAMM.KundenID = 'K0001';
 
 #Produktbestandteile Aufrufen (Produktionsmaterial und Hilfsstoffe)
 (
@@ -130,6 +130,4 @@ LEFT OUTER JOIN Privater_Kunde pk on k.KundenID = pk.KundenID
 INNER JOIN Telefonnummern t on k.KundenID = t.ReferenzKunde
 WHERE k.KundenID = 'K0001';
 
-SELECT * FROM Gewerblicher_Kunde;
-SELECT * FROM Privater_Kunde;
-SELECT * FROM Bestellung;
+

@@ -140,35 +140,76 @@ INSERT INTO Roecke(ProduktID, EU_Groeße, Laenge, Bundumfang, Weite) VALUES
 ('1209', '36', '23', '91', '36'),
 ('1209', '38', '23', '91', '38');
 
-Insert Into obergruppe_untergruppe(obergruppeId, untergruppeId) VALUES
-(60,00), (60,02), (60,06), (60,15),
-(61,02), (61,10), (63,04), (66,11), (66,21),
-(67,13),(67,28), (67,29), (80,02), (84,00), (01,138), (01,52261);
+/*Insert Into Obergruppe_Untergruppe(obergruppeid, untergruppeid, bezeichnung_obergruppe, bezeichnung_untergruppe) VALUES
+(60,00, 'Nähgarn','Kettelgarn Saba 105'),
+(60,02, 'Nähgarn','Kettelgarn Saba 110'),
+(60,06, 'Nähgarn','Kettelgarn Saba 115'),
+(60,09, 'Nähgarn', 'Kettelgarn Saba 120'),
+(60,15, 'Nähgarn','Faden'),
+(61,02, 'Vlieseline','Stretch 100'),
+(61,10, 'Vlieseline','Stretch 200'),
+(63,04, 'RV','Metall RV mit Stern'),
+(66,11, 'Etikett', 'Webetikett Bloomers'),
+(66,21, 'Etikett','Kartonage Etikett'),
+(67,13, 'Sonstiges','Unterlegscheibe'),
+(67,28, 'Sonstiges','Patentkn. Blume'),
+(67,29, 'Sonstiges','Nieten Blume'),
+(80,02, 'Rasant','Rasant 120'),
+(84,00, 'Futter','Taschenfutter BV'),
+(01,138, 'Stoff', '97% Baumwolle 3% Elasthan'),
+(01,52261, 'Stoff', '97% Baumwolle 3% Elasthan');*/
 
-INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, BestandteilID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe) VALUE
-(60, 00, 01, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 105'),
-(60, 02, 04, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 110'),
-(60, 06, 04, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 115'),
-(60, 15, 99, null, 90, 'Baden-Württemberg','Nähgarn','Faden'),
-(60, 09, 27, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 120'),
-(61, 02, 01, null, 12.5, 'Niedersachsen','Vlieseline','Stretch Vlieseline 100'),
-(61, 10, 04, null, 12.5, 'Niedersachsen','Vlieseline','Stretch Vlieseline 200'),
-(63, 04, 04, null, 12.5, 'Niedersachsen','RV','Metall RV mit Stern'),
-(66, 11, 01, null, 12.5, 'Bayern','Etikett', 'Webetikett Bloomers'),
-(66, 21, 01, null, 12.5, 'Bayern','Etikett','Kartonage Etikett'),
-(67, 13, 01, null, 12.5, 'Bayern','Sonstiges','Unterlegscheibe'),
-(67, 28, 01, null, 12.5, 'Bayern','Sonstiges','Patentkn. Blume'),
-(67, 29, 01, null, 12.5, 'Bayern','Sonstiges','Nieten Blume'),
-(80, 02, 01, null, 12.5, 'Bremen','Rasant','Rasant 120'),
-(84, 00, 01, null, 12.5, 'Bremen','Futter','Taschenfutter BV');
+INSERT INTO Obergruppe(ObergruppeID, Bezeichnung_Obergruppe) VALUES
+(60, 'Nähgarn'),
+(61, 'Vlieseline'),
+(63, 'RV'),
+(66, 'Etikett'),
+(67, 'Sonstiges'),
+(80, 'Rasant'),
+(84, 'Futter'),
+(01, 'Stoff');
+
+INSERT INTO Untergruppe(UntergruppeID, Bezeichnung_Untergruppe) VALUES
+(00, 'Kettelgarn Saba 105'),
+(02, 'Kettelgarn Saba 110'),
+(04, 'Metall RV mit Stern'),
+(06, 'Kettelgarn Saba 115'),
+(09, 'Kettelgarn Saba 120'),
+(10, 'Strech 200'),
+(11, 'Webetikett Bloomers'),
+(13, 'Unterlegscheibe'),
+(15, 'Faden'),
+(21, 'Kartonage Etikett'),
+(28, 'Patentkn. Blume'),
+(29, 'Nieten Blume'),
+(138, '97% Baumwolle 3% Elasthan'),
+(52261, '97% Baumwolle 3% Elasthan');
+
+
+INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, BestandteilID, Menge, Ursprungsland) VALUES
+(60, 00, 01, null, 12.5, 'Baden-Württemberg'),
+(60, 02, 04, null, 12.5, 'Baden-Württemberg'),
+(60, 06, 04, null, 12.5, 'Baden-Württemberg'),
+(60, 15, 99, null, 90, 'Baden-Württemberg'),
+(60, 09, 27, null, 12.5, 'Baden-Württemberg'),
+(61, 02, 01, null, 12.5, 'Niedersachsen'),
+(61, 10, 04, null, 12.5, 'Niedersachsen'),
+(63, 04, 04, null, 12.5, 'Niedersachsen'),
+(66, 11, 01, null, 12.5, 'Bayern'),
+(66, 21, 01, null, 12.5, 'Bayern'),
+(67, 13, 01, null, 12.5, 'Bayern'),
+(67, 28, 01, null, 12.5, 'Bayern'),
+(67, 29, 01, null, 12.5, 'Bayern'),
+(80, 02, 01, null, 12.5, 'Bremen'),
+(84, 00, 01, null, 12.5, 'Bremen');
 
 INSERT INTO qualitaetsmerkmal(MerkmalID, GOTS, Vegan) VALUE
 (1, true, false);
 
 #TODO: Noch überarbeiten
-INSERT INTO produktionsmaterial(ObergruppeID, UntergruppeID, FarbID, Menge, Ursprungsland, Bezeichnung_Obergruppe, Bezeichnung_Untergruppe, MerkmalID) VALUE
-(01, 138, 01, 2000, 'Nordrhein-Westfalen', 'Stoff', '97% Baumwolle 3% Elasthan', 1),
-(01, 52261, 27, 2000, 'Nordrhein-Westfalen', 'Stoff', '97% Baumwolle 3% Elasthan', 1);
+INSERT INTO produktionsmaterial(ObergruppeID, UntergruppeID, FarbID, MerkmalID, Menge, Ursprungsland) VALUE
+(01, 138, 01, 1, 2000, 'Bayern'),
+(01, 52261, 27, 1, 2000, 'Bremen');
 
 INSERT INTO produktvorlage(ProduktID, ObergruppeID, UntergruppeID, Verbrauchsmenge, Materialkosten) VALUES
 ('1183',60, 15, 150, 0.09),

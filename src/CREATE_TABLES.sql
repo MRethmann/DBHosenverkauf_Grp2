@@ -71,8 +71,8 @@ CREATE TABLE Hilfsstoffe
     BestandteilID           INTEGER,
     Menge                   DECIMAL(9,2),
     Ursprungsland           VARCHAR (255),
-    Bezeichnung_Obergruppe  VARCHAR (255),
-    Bezeichnung_Untergruppe VARCHAR (255),
+    #Bezeichnung_Obergruppe  VARCHAR (255),
+    #Bezeichnung_Untergruppe VARCHAR (255),
 
     PRIMARY KEY (UntergruppeID, ObergruppeID)
 );
@@ -176,14 +176,34 @@ CREATE TABLE Personalstamm
     PRIMARY KEY (PersonalID)
 );
 
-DROP TABLE IF EXISTS Obergruppe_Untergruppe;
-CREATE TABLE Obergruppe_Untergruppe
+DROP TABLE IF EXISTS Obergruppe;
+CREATE TABLE Obergruppe
 (
-    ObergruppeID INT NOT NULL,
-    UntergruppeID INT NOT NULL,
+    ObergruppeID INT NOT NULL AUTO_INCREMENT,
+    Bezeichnung_Obergruppe VARCHAR(255),
 
-    PRIMARY KEY (UntergruppeID,ObergruppeID)
+    PRIMARY KEY (ObergruppeID)
 );
+
+DROP TABLE IF EXISTS Untergruppe;
+CREATE TABLE Untergruppe
+(
+    UntergruppeID INT NOT NULL AUTO_INCREMENT,
+    Bezeichnung_Untergruppe VARCHAR(255),
+
+    PRIMARY KEY (UntergruppeID)
+);
+
+#DROP TABLE IF EXISTS Obergruppe_Untergruppe;
+#CREATE TABLE Obergruppe_Untergruppe
+#(
+ #   ObergruppeID INT NOT NULL,
+   # UntergruppeID INT NOT NULL,
+  #  Bezeichnung_Obergruppe  VARCHAR (255),
+    #Bezeichnung_Untergruppe VARCHAR (255),
+#
+ #   PRIMARY KEY (UntergruppeID,ObergruppeID)
+#);
 
 DROP TABLE IF EXISTS Personalstamm_Buchhaltung;
 CREATE TABLE Personalstamm_Buchhaltung
@@ -232,10 +252,10 @@ CREATE TABLE Produktionsmaterial
     MerkmalID               INTEGER,
     Menge                   DECIMAL(9,2),
     Ursprungsland           VARCHAR (255),
-    Bezeichnung_Obergruppe  VARCHAR (255),
-    Bezeichnung_Untergruppe VARCHAR (255),
+    #Bezeichnung_Obergruppe  VARCHAR (255),
+    #Bezeichnung_Untergruppe VARCHAR (255),
 
-    PRIMARY KEY (UntergruppeID,ObergruppeID)
+    PRIMARY KEY (ObergruppeID,UntergruppeID)
 );
 
 DROP TABLE IF EXISTS Produktstamm;

@@ -170,7 +170,7 @@ INSERT INTO Obergruppe(ObergruppeID, Bezeichnung_Obergruppe) VALUES
 (01, 'Stoff');
 
 INSERT INTO Untergruppe(UntergruppeID, Bezeichnung_Untergruppe) VALUES
-(00, 'Kettelgarn Saba 105'),
+(01, 'Kettelgarn Saba 105'),
 (02, 'Kettelgarn Saba 110'),
 (04, 'Metall RV mit Stern'),
 (06, 'Kettelgarn Saba 115'),
@@ -185,23 +185,25 @@ INSERT INTO Untergruppe(UntergruppeID, Bezeichnung_Untergruppe) VALUES
 (138, '97% Baumwolle 3% Elasthan'),
 (52261, '97% Baumwolle 3% Elasthan');
 
+SELECT * FROM Untergruppe;
+
 
 INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, BestandteilID, Menge, Ursprungsland) VALUES
-(60, 00, 01, null, 12.5, 'Baden-Württemberg'),
-(60, 02, 04, null, 12.5, 'Baden-Württemberg'),
-(60, 06, 04, null, 12.5, 'Baden-Württemberg'),
+(60, 1, 01, null, 12.5, 'Baden-Württemberg'),
+(60, 2, 04, null, 12.5, 'Baden-Württemberg'),
+(60, 6, 04, null, 12.5, 'Baden-Württemberg'),
 (60, 15, 99, null, 90, 'Baden-Württemberg'),
-(60, 09, 27, null, 12.5, 'Baden-Württemberg'),
-(61, 02, 01, null, 12.5, 'Niedersachsen'),
+(60, 9, 27, null, 12.5, 'Baden-Württemberg'),
+(61, 2, 01, null, 12.5, 'Niedersachsen'),
 (61, 10, 04, null, 12.5, 'Niedersachsen'),
-(63, 04, 04, null, 12.5, 'Niedersachsen'),
+(63, 4, 04, null, 12.5, 'Niedersachsen'),
 (66, 11, 01, null, 12.5, 'Bayern'),
 (66, 21, 01, null, 12.5, 'Bayern'),
 (67, 13, 01, null, 12.5, 'Bayern'),
 (67, 28, 01, null, 12.5, 'Bayern'),
 (67, 29, 01, null, 12.5, 'Bayern'),
-(80, 02, 01, null, 12.5, 'Bremen'),
-(84, 00, 01, null, 12.5, 'Bremen');
+(80, 2, 01, null, 12.5, 'Bremen'),
+(84, 1, 01, null, 12.5, 'Bremen');
 
 INSERT INTO qualitaetsmerkmal(MerkmalID, GOTS, Vegan) VALUE
 (1, true, false);
@@ -212,23 +214,23 @@ INSERT INTO produktionsmaterial(ObergruppeID, UntergruppeID, FarbID, MerkmalID, 
 (01, 52261, 27, 1, 2000, 'Bremen');
 
 INSERT INTO produktvorlage(ProduktID, ObergruppeID, UntergruppeID, Verbrauchsmenge, Materialkosten) VALUES
-('1183',60, 15, 150, 0.09),
-('1183',01,138,15,14.50),
-('11591B', 01, 52261, 1.38, 4.55),
-('11591B', 60, 00, 90, 0.2),
-('11591B', 60, 02, 30, 0.02),
-('11591B', 60, 06, 1.38, 4.55),
-('11591B', 60, 15, 150, 0.09),
-('11591B', 61, 02, 0.1, 0.03),
-('11591B', 61, 10, 0.15, 0.08),
-('11591B', 63, 04, 1, 0.23),
-('11591B', 66, 11, 1, 0.05),
-('11591B', 66, 21, 1, 0.01),
-('11591B', 67, 13, 1, 0.01),
-('11591B', 67, 28, 1, 0.19),
-('11591B', 67, 29, 4, 0.26),
-('11591B', 80, 02, 150, 0.11),
-('11591B', 84, 00, 0.15, 0.31);
+('1183',    60, 15, 150, 0.09),
+('1183',    1,138,15,14.50),
+('11591B',  1, 52261, 1.38, 4.55),
+('11591B',  60, 00, 90, 0.2),
+('11591B',  60, 02, 30, 0.02),
+('11591B',  60, 06, 1.38, 4.55),
+('11591B',  60, 15, 150, 0.09),
+('11591B',  61, 02, 0.1, 0.03),
+('11591B',  61, 10, 0.15, 0.08),
+('11591B',  63, 04, 1, 0.23),
+('11591B',  66, 11, 1, 0.05),
+('11591B',  66, 21, 1, 0.01),
+('11591B',  67, 13, 1, 0.01),
+('11591B',  67, 28, 1, 0.19),
+('11591B',  67, 29, 4, 0.26),
+('11591B',  80, 02, 150, 0.11),
+('11591B',  84, 00, 0.15, 0.31);
 
 #Lieferanten erstellen
 INSERT INTO lieferantenstamm(LieferantenID, Firmenname, Ländercode, Straße, Hausnummer,
@@ -241,23 +243,23 @@ INSERT INTO lieferanten_zu_produktstamm(LieferantenID, ProduktID, Menge) VALUES
 ('L1235','1183',110);
 
 INSERT INTO lieferantenstamm_zu_materialstamm(LieferantenID, ObergruppeID, UntergruppeID, Menge) VALUES
-('L1234',01,138,15),
-('L1234', 01, 52261, 5),
-('L1234', 60, 00, 102.5),
-('L1234', 60, 02, 50.5),
-('L1235', 60, 06, 12.5),
-('L1235', 60, 15, 150.5),
-('L1235', 61, 02, 12.5),
-('L1234', 61, 10, 12.5),
-('L1234', 63, 04, 12.5),
-('L1234', 66, 11, 12.5),
-('L1234', 66, 21, 12.5),
-('L1235', 67, 13, 12.5),
-('L1234', 67, 28, 12.5),
-('L1235', 67, 29, 12.5),
-('L1235', 60, 09, 90),
-('L1234', 80, 02, 123.5),
-('L1234', 84, 00, 12.5);
+('L1234',   1,138,15),
+('L1234',   1, 52261, 5),
+('L1234',   60, 1, 102.5),
+('L1234',   60, 2, 50.5),
+('L1235',   60, 6, 12.5),
+('L1235',   60, 15, 150.5),
+('L1235',   61, 2, 12.5),
+('L1234',   61, 10, 12.5),
+('L1234',   63, 4, 12.5),
+('L1234',   66, 11, 12.5),
+('L1234',   66, 21, 12.5),
+('L1235',   67, 13, 12.5),
+('L1234',   67, 28, 12.5),
+('L1235',   67, 29, 12.5),
+('L1235',   60, 9, 90),
+('L1234',   80, 2, 123.5),
+('L1234',   84, 1, 12.5);
 
 #Personal hinzufügen
 INSERT INTO personalstamm(personalid, Vorname, nachname, straße, hausnummer,

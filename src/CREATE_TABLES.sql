@@ -65,6 +65,7 @@ CREATE TABLE Gewerblicher_Kunde_zu_Ansprechpartner
 DROP TABLE IF EXISTS Hilfsstoffe;
 CREATE TABLE Hilfsstoffe
 (
+    HilfsstoffID            INTEGER NOT NULL AUTO_INCREMENT,
     ObergruppeID            INTEGER NOT NULL,
     UntergruppeID           INTEGER NOT NULL,
     FarbID                  INTEGER,
@@ -74,7 +75,7 @@ CREATE TABLE Hilfsstoffe
     #Bezeichnung_Obergruppe  VARCHAR (255),
     #Bezeichnung_Untergruppe VARCHAR (255),
 
-    PRIMARY KEY (UntergruppeID, ObergruppeID)
+    PRIMARY KEY (HilfsstoffID)
 );
 
 DROP TABLE IF EXISTS Hose;
@@ -179,7 +180,7 @@ CREATE TABLE Personalstamm
 DROP TABLE IF EXISTS Obergruppe;
 CREATE TABLE Obergruppe
 (
-    ObergruppeID INT NOT NULL AUTO_INCREMENT,
+    ObergruppeID INT NOT NULL,
     Bezeichnung_Obergruppe VARCHAR(255),
 
     PRIMARY KEY (ObergruppeID)
@@ -188,7 +189,7 @@ CREATE TABLE Obergruppe
 DROP TABLE IF EXISTS Untergruppe;
 CREATE TABLE Untergruppe
 (
-    UntergruppeID INT NOT NULL AUTO_INCREMENT,
+    UntergruppeID INT NOT NULL,
     Bezeichnung_Untergruppe VARCHAR(255),
 
     PRIMARY KEY (UntergruppeID)
@@ -246,6 +247,7 @@ CREATE TABLE Privater_Kunde
 DROP TABLE IF EXISTS Produktionsmaterial;
 CREATE TABLE Produktionsmaterial
 (
+    ProduktionsmaterialID   INTEGER NOT NULL AUTO_INCREMENT,
     ObergruppeID            INTEGER NOT NULL,
     UntergruppeID           INTEGER NOT NULL,
     FarbID                  INTEGER,
@@ -255,7 +257,7 @@ CREATE TABLE Produktionsmaterial
     #Bezeichnung_Obergruppe  VARCHAR (255),
     #Bezeichnung_Untergruppe VARCHAR (255),
 
-    PRIMARY KEY (ObergruppeID,UntergruppeID)
+    PRIMARY KEY (ProduktionsmaterialID)
 );
 
 DROP TABLE IF EXISTS Produktstamm;
@@ -276,13 +278,14 @@ CREATE TABLE Produktstamm
 DROP TABLE IF EXISTS Produktvorlage;
 CREATE TABLE Produktvorlage
 (
+    ProduktvorlagenID   INTEGER NOT NULL AUTO_INCREMENT,
     ProduktID           CHAR(10) NOT NULL,
-    ObergruppeID        Integer,
-    UntergruppeID       Integer,
+    ObergruppeID        INTEGER,
+    UntergruppeID       INTEGER,
     Verbrauchsmenge     DECIMAL(9,2),
     Materialkosten      DECIMAL(9,2),
 
-    PRIMARY KEY (ProduktID, ObergruppeID, UntergruppeID)
+    PRIMARY KEY (ProduktvorlagenID)
 );
 
 DROP TABLE IF EXISTS Qualitaetsmerkmal;

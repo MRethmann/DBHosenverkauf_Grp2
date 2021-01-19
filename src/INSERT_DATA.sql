@@ -112,6 +112,7 @@ INSERT INTO farbe(farbid, farbe) VALUES
 (05, 'Rubinrot'),
 (06, 'Bentenblau'),
 (24, 'Jeansblau'),
+(99, 'Rot'),
 (27, 'Bordeaux ');
 
 INSERT INTO produktstamm(ProduktID, `2te_Wahl`, Saison, Bezeichnung, Beschreibung, Menge, Preis, FarbID) VALUES
@@ -148,7 +149,8 @@ INSERT INTO hilfsstoffe(ObergruppeID, UntergruppeID, FarbID, BestandteilID, Meng
 (60, 00, 01, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 105'),
 (60, 02, 04, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 110'),
 (60, 06, 04, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 115'),
-(60, 15, 01, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 120'),
+(60, 15, 99, null, 90, 'Baden-Württemberg','Nähgarn','Faden'),
+(60, 09, 27, null, 12.5, 'Baden-Württemberg','Nähgarn','Kettelgarn Saba 120'),
 (61, 02, 01, null, 12.5, 'Niedersachsen','Vlieseline','Stretch Vlieseline 100'),
 (61, 10, 04, null, 12.5, 'Niedersachsen','Vlieseline','Stretch Vlieseline 200'),
 (63, 04, 04, null, 12.5, 'Niedersachsen','RV','Metall RV mit Stern'),
@@ -212,6 +214,7 @@ INSERT INTO lieferantenstamm_zu_materialstamm(LieferantenID, ObergruppeID, Unter
 ('L1235', 67, 13, 12.5),
 ('L1234', 67, 28, 12.5),
 ('L1235', 67, 29, 12.5),
+('L1235', 60, 09, 90),
 ('L1234', 80, 02, 123.5),
 ('L1234', 84, 00, 12.5);
 

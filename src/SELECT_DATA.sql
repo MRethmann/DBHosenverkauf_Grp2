@@ -1,5 +1,11 @@
 Use Hosenfabrik;
 
+#Roten Faden finden
+Select h.Bezeichnung_Obergruppe,h.Bezeichnung_Untergruppe,h.menge,f.Farbe
+From Hilfsstoffe h
+        Inner Join Farbe F on h.FarbID = F.FarbID
+Where h.Bezeichnung_Untergruppe='Faden' AND f.Farbe='rot';
+
 #Kunde abrufen
 SELECT Privater_Kunde.Vorname,
        Privater_Kunde.Nachname,
@@ -91,7 +97,7 @@ WHERE b.BestellungsID = 1;
 SELECT Nachname, Vorname
 FROM Gewerblicher_Kunde_zu_Ansprechpartner GA
 JOIN Gewerblicher_Kunde GK ON GA.KundenID = GK.KundenID
-WHERE GK.Firmenname = '';
+WHERE GK.Firmenname = 'Muster Gmbh';
 
 #Abfrage aller Bestellungen eines Kunden
 SELECT b.KundenID, b.BestellungsID, pk.Vorname, pk.Nachname, gk.Firmenname
@@ -107,7 +113,7 @@ JOIN Bestellposition bp on b.BestellungsID = bp.BestellungsID
 WHERE b.BestellungsID = '2'
 ORDER BY Positionsnummer;
 
-#Abfrage aller Rechnungen eines Kunden
+#Abfrage aller offenen Rechnungen eines Kunden
 SELECT b.KundenID, b.BestellungsID, r.RechnungsID, r.Kosten, r.Zahlungsfrist, pk.Vorname, pk.Nachname, gk.Firmenname
 FROM Kundenstamm k
 LEFT OUTER JOIN Privater_Kunde pk on k.KundenID = pk.KundenID

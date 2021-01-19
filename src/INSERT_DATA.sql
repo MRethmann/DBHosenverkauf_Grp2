@@ -209,7 +209,7 @@ INSERT INTO qualitaetsmerkmal(MerkmalID, GOTS, Vegan) VALUE
 (1, true, false);
 
 #TODO: Noch überarbeiten
-INSERT INTO produktionsmaterial(ObergruppeID, UntergruppeID, FarbID, MerkmalID, Menge, Ursprungsland) VALUE
+INSERT INTO produktionsmaterial(ObergruppeID, UntergruppeID, FarbID, MerkmalID, Menge, Ursprungsland) VALUES
 (01, 138, 01, 1, 2000, 'Bayern'),
 (01, 52261, 27, 1, 2000, 'Bremen');
 

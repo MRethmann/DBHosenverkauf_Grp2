@@ -140,4 +140,4 @@ LEFT OUTER JOIN Privater_Kunde pk on k.KundenID = pk.KundenID
 INNER JOIN Telefonnummern t on k.KundenID = t.ReferenzKunde
 WHERE k.KundenID = 'K0001';
 
-
+#:)

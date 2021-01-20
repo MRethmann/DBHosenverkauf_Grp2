@@ -1,17 +1,20 @@
 Use Hosenfabrik;
 
 #Roten Faden finden
-SELECT o.Bezeichnung_Obergruppe,u.Bezeichnung_Untergruppe,h.menge,f.Farbe
+SELECT o.Bezeichnung_Obergruppe,
+       u.Bezeichnung_Untergruppe,
+       h.menge,
+       f.Farbe
 FROM Hilfsstoffe h
-        Inner Join Farbe F on h.FarbID = F.FarbID
-        Inner Join obergruppe o on h.ObergruppeID = o.ObergruppeID
-        Inner Join untergruppe u on h.UntergruppeID = u.UntergruppeID
+        INNER JOIN Farbe F on h.FarbID = F.FarbID
+        INNER JOIN obergruppe o on h.ObergruppeID = o.ObergruppeID
+        INNER JOIN untergruppe u on h.UntergruppeID = u.UntergruppeID
 WHERE u.Bezeichnung_Untergruppe='Faden' AND f.Farbe='rot';
 
 #Kunde abrufen
 SELECT Privater_Kunde.Vorname,
        Privater_Kunde.Nachname,
-       kl.Ort,
+       po.Ort,
        kl.PLZ,
        kl.Straße,
        kl.Hausnummer,
@@ -20,6 +23,7 @@ FROM KUNDENSTAMM
          INNER JOIN privater_kunde ON KUNDENSTAMM.KundenID = privater_kunde.KundenID
          INNER JOIN telefonnummern ON KUNDENSTAMM.KundenID = telefonnummern.ReferenzKunde
          INNER JOIN kundenstamm_zu_lieferadressen kl on KUNDENSTAMM.KundenID = kl.KundenID
+         INNER JOIN plz_ort po on kl.PLZ = po.PLZ
 WHERE KUNDENSTAMM.KundenID = 'K0001';
 
 #Produktbestandteile Aufrufen (Produktionsmaterial und Hilfsstoffe)
@@ -30,10 +34,10 @@ WHERE KUNDENSTAMM.KundenID = 'K0001';
            o.Bezeichnung_Obergruppe,
            u.Bezeichnung_Untergruppe
     FROM produktstamm
-             JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
-             JOIN untergruppe u on p.UntergruppeID = u.UntergruppeID
-             JOIN obergruppe o on p.ObergruppeID = o.ObergruppeID
-             JOIN produktionsmaterial pm on p.ObergruppeID = pm.ObergruppeID and p.UntergruppeID = pm.UntergruppeID
+         INNER JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
+         INNER JOIN untergruppe u on p.UntergruppeID = u.UntergruppeID
+         INNER JOIN obergruppe o on p.ObergruppeID = o.ObergruppeID
+         INNER JOIN produktionsmaterial pm on p.ObergruppeID = pm.ObergruppeID and p.UntergruppeID = pm.UntergruppeID
     WHERE produktstamm.Bezeichnung = 'Alina'
 )
 UNION
@@ -44,10 +48,10 @@ UNION
            o.Bezeichnung_Obergruppe as "Obergruppe",
            u.Bezeichnung_Untergruppe as "Untergruppe"
     FROM produktstamm
-          JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
-          JOIN untergruppe u on p.UntergruppeID = u.UntergruppeID
-          JOIN obergruppe o on p.ObergruppeID = o.ObergruppeID
-          JOIN hilfsstoffe h on p.ObergruppeID = h.ObergruppeID and p.UntergruppeID = h.UntergruppeID
+         INNER JOIN produktvorlage p on produktstamm.ProduktID = p.ProduktID
+         INNER JOIN untergruppe u on p.UntergruppeID = u.UntergruppeID
+         INNER JOIN obergruppe o on p.ObergruppeID = o.ObergruppeID
+         INNER JOIN hilfsstoffe h on p.ObergruppeID = h.ObergruppeID and p.UntergruppeID = h.UntergruppeID
     WHERE produktstamm.Bezeichnung = 'Alina'
 );
 
@@ -104,27 +108,44 @@ FROM Fertigungsauftrag f
 WHERE b.BestellungsID = 1;
 
 #Abfrage der Ansprechpartner einer Firma
-SELECT Nachname, Vorname
+SELECT Nachname,
+       Vorname
 FROM Gewerblicher_Kunde_zu_Ansprechpartner GA
 JOIN Gewerblicher_Kunde GK ON GA.KundenID = GK.KundenID
 WHERE GK.Firmenname = 'Musterfirma GmbH';
 
 #Abfrage aller Bestellungen eines Kunden
-SELECT b.KundenID, b.BestellungsID, pk.Vorname, pk.Nachname, gk.Firmenname
+SELECT b.KundenID,
+       b.BestellungsID,
+       pk.Vorname,
+       pk.Nachname,
+       gk.Firmenname
 FROM Bestellung b
-LEFT OUTER JOIN Privater_Kunde pk on b.KundenID = pk.KundenID
-LEFT OUTER JOIN Gewerblicher_Kunde gk on b.KundenID = gk.KundenID
+    LEFT OUTER JOIN Privater_Kunde pk on b.KundenID = pk.KundenID
+    LEFT OUTER JOIN Gewerblicher_Kunde gk on b.KundenID = gk.KundenID
 WHERE b.KundenID = 'K0001';
 
 #Abfrage der Bestellpositionen einer Bestellung
-SELECT b.BestellungsID, bp.Positionsnummer, bp.ProduktID, bp.Menge, bp.Einzelpreis, bp.Gesamtbetrag
+SELECT b.BestellungsID,
+       bp.Positionsnummer,
+       bp.ProduktID,
+       bp.Menge,
+       bp.Einzelpreis,
+       bp.Gesamtbetrag
 FROM Bestellung b
 JOIN Bestellposition bp on b.BestellungsID = bp.BestellungsID
 WHERE b.BestellungsID = '2'
 ORDER BY Positionsnummer;
 
 #Abfrage aller offenen Rechnungen eines Kunden
-SELECT b.KundenID, b.BestellungsID, r.RechnungsID, r.Kosten, r.Zahlungsfrist, pk.Vorname, pk.Nachname, gk.Firmenname
+SELECT b.KundenID,
+       b.BestellungsID,
+       r.RechnungsID,
+       r.Kosten,
+       r.Zahlungsfrist,
+       pk.Vorname,
+       pk.Nachname,
+       gk.Firmenname
 FROM Kundenstamm k
 LEFT OUTER JOIN Privater_Kunde pk on k.KundenID = pk.KundenID
 LEFT OUTER JOIN Gewerblicher_Kunde gk on k.KundenID = gk.KundenID
@@ -133,11 +154,17 @@ JOIN Rechnung r on b.BestellungsID = r.BestellungsID
 WHERE b.KundenID = 'K0001' AND r.Abgeschlossen = false;
 
 #Abfrage aller Telefonnummern eines Kunden
-SELECT k.KundenID, gk.Firmenname, pk.Vorname, pk.Nachname, t.Telefonnummer
+SELECT k.KundenID,
+       gk.Firmenname,
+       pk.Vorname,
+       pk.Nachname,
+       t.Telefonnummer
 FROM Kundenstamm k
 LEFT OUTER JOIN Gewerblicher_Kunde gk on k.KundenID = gk.KundenID
 LEFT OUTER JOIN Privater_Kunde pk on k.KundenID = pk.KundenID
 INNER JOIN Telefonnummern t on k.KundenID = t.ReferenzKunde
 WHERE k.KundenID = 'K0001';
+
+
 
 #:)

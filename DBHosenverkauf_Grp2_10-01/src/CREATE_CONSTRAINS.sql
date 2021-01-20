@@ -189,3 +189,18 @@ ALTER TABLE Telefonnummern
     ADD CONSTRAINT FOREIGN KEY (ReferenzKunde) REFERENCES Kundenstamm (KundenID)
         ON DELETE CASCADE
         ON UPDATE CASCADE;
+
+ALTER TABLE Personalstamm
+    ADD CONSTRAINT Foreign Key (PLZ) REFERENCES PLZ_Ort (PLZ)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Kundenstamm_zu_Lieferadressen
+    ADD CONSTRAINT Foreign Key (PLZ) REFERENCES PLZ_Ort (PLZ)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Lieferantenstamm
+    ADD CONSTRAINT Foreign Key (PLZ) REFERENCES PLZ_Ort (PLZ)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;

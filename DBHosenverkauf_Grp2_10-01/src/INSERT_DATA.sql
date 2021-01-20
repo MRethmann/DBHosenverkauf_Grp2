@@ -23,31 +23,55 @@ INSERT INTO kundenstamm(kundenid, umsatz) VALUE
 ('K0019', 25000.00),
 ('K0020', 50000.00);
 
-INSERT INTO kundenstamm_zu_lieferadressen(KundenID, Straße, Hausnummer, Ort, PLZ, Laendercode) VALUE
-('K0001', 'Vogelstraße', '7', 'Berlin', '31252', 'DE'),
-('K0002', 'Kaninchenweg', '12', 'Hamburg', '54123', 'DE'),
-('K0002', 'Löwenstraße', '55', 'Bremen', '83413', 'DE'),
-('K0003', 'Elefantenpättchen', '213', 'München', '71234', 'DE'),
-('K0003', 'Zum-Geparden', '2', 'Ibbenbüren', '21546', 'DE'),
-('K0004', 'Aaseewinkel', '89', 'Lingen', '02858', 'DE'),
-('K0005', 'Alstedder Straße', '70', 'Lingen', '27528', 'DE'),
-('K0006', 'Alpenstraße', '59', 'Gerste', '23151', 'DE'),
-('K0007', 'Am Friedhof', '22', 'Osnabrück', '23251', 'DE'),
-('K0008', 'Meisenweg', '54', 'Münster', '74823', 'DE'),
-('K0009', 'Michaelstraße', '34', 'Rostock', '92851', 'DE'),
-('K0010', 'Mauritiusstraße', '69', 'Cloppenburg', '65283', 'DE'),
-('K0011', 'Sandweg', '12', 'Oldenburg', '29571', 'DE'),
-('K0011', 'Sauerlandstraße', '8', 'Emsdetten', '23123', 'DE'),
-('K0012', 'Schürfweg', '4', 'Beckum', '51242', 'DE'),
-('K0012', 'Schubertstraße', '2', 'Bamberg', '24512', 'DE'),
-('K0013', 'Sperberweg', '99', 'Bielefeld', '85728', 'DE'),
-('K0014', 'Südstraße', '108', 'Nürnberg', '23515', 'DE'),
-('K0015', 'Sundern', '43', 'Frankfurt a. M.', '54231', 'DE'),
-('K0016', 'Stettiner Straße', '19', 'München', '71242', 'DE'),
-('K0017', 'Kranichweg', '42', 'Bad Tölz', '75312', 'DE'),
-('K0018', 'Kuckusweg', '18', 'Kempten', '34612', 'DE'),
-('K0019', 'Königsstraße', '109', 'Freiburg', '86921', 'DE'),
-('K0020', 'Kirchenstraße', '100', 'Freudenstadt', '54122', 'DE');
+INSERT INTO plz_ort (Ort, PLZ) VALUES
+('Berlin', '31252'),
+('Hamburg', '54123'),
+('Bremen', '83413'),
+('München', '71234'),
+('Ibbenbüren', '21546'),
+('Lingen', '02858'),
+('Gerste', '23151'),
+('Osnabrück', '23251'),
+('Münster', '74823'),
+('Rostock', '92851'),
+('Cloppenburg', '65283'),
+('Oldenburg', '29571'),
+('Emsdetten', '23123'),
+('Beckum', '51242'),
+('Bamberg', '24512'),
+('Bielefeld', '85728'),
+('Nürnberg', '23515'),
+('Frankfurt a. M.', '54231'),
+('Bad Tölz', '75312'),
+('Kempten', '34612'),
+('Freiburg', '86921'),
+('Freudenstadt', '54122');
+
+INSERT INTO kundenstamm_zu_lieferadressen(KundenID, Straße, Hausnummer, PLZ, Laendercode) VALUE
+('K0001', 'Vogelstraße', '7','31252', 'DE'),
+('K0002', 'Kaninchenweg', '12','54123', 'DE'),
+('K0002', 'Löwenstraße', '55','83413', 'DE'),
+('K0003', 'Elefantenpättchen', '213','71234', 'DE'),
+('K0003', 'Zum-Geparden', '2','21546', 'DE'),
+('K0004', 'Aaseewinkel', '89','02858', 'DE'),
+('K0005', 'Alstedder Straße', '70','02858', 'DE'),
+('K0006', 'Alpenstraße', '59','23151', 'DE'),
+('K0007', 'Am Friedhof', '22','23251', 'DE'),
+('K0008', 'Meisenweg', '54','74823', 'DE'),
+('K0009', 'Michaelstraße', '34','92851', 'DE'),
+('K0010', 'Mauritiusstraße', '69','65283', 'DE'),
+('K0011', 'Sandweg', '12','29571', 'DE'),
+('K0011', 'Sauerlandstraße', '8','23123', 'DE'),
+('K0012', 'Schürfweg', '4','51242', 'DE'),
+('K0012', 'Schubertstraße', '2','24512', 'DE'),
+('K0013', 'Sperberweg', '99','85728', 'DE'),
+('K0014', 'Südstraße', '108','23515', 'DE'),
+('K0015', 'Sundern', '43','54231', 'DE'),
+('K0016', 'Stettiner Straße', '19','71234', 'DE'),
+('K0017', 'Kranichweg', '42','75312', 'DE'),
+('K0018', 'Kuckusweg', '18', '34612', 'DE'),
+('K0019', 'Königsstraße', '109','86921', 'DE'),
+('K0020', 'Kirchenstraße', '100','54122', 'DE');
 
 
 INSERT INTO privater_kunde VALUE
@@ -117,7 +141,7 @@ INSERT INTO telefonnummern(ReferenzKunde, ReferenzPersonal, ReferenzLieferant, T
 ('K0001', null, null, '08481729492');
 
 #Produkt hinzufügen
-INSERT INTO farbe(farbid, farbe) VALUES
+INSERT INTO Farbe(farbid, farbe) VALUES
 (01, 'Anthrazit'),
 (03, 'Ocker'),
 (04, 'Marine'),
@@ -224,10 +248,9 @@ INSERT INTO Produktvorlage(ProduktID, ObergruppeID, UntergruppeID, Verbrauchsmen
 ('11591B',  84, 1, 0.15, 0.31);
 
 #Lieferanten erstellen
-INSERT INTO lieferantenstamm(LieferantenID, Firmenname, Ländercode, Straße, Hausnummer,
-                             Ort, PLZ, Exportflag, Ausfuhrmenge, Importflag, Einfuhrmenge) VALUES
-('L1234', 'Muster GmbH', 'DEU', 'Musterstraße', '1b', 'Haramburg', '12345', true, 10000, false, null),
-('L1235', 'Muster 3 GmbH', 'DEU', 'Musterstraße', '2b', 'Halalburg', '12346', false, null, true, 15000);
+INSERT INTO lieferantenstamm(LieferantenID, Firmenname, Straße, Hausnummer, PLZ, Ländercode, Exportflag, Ausfuhrmenge, Importflag, Einfuhrmenge) VALUES
+('L1234', 'Muster GmbH', 'Musterstraße', '1b', '31252', 'DEU', true, 10000, false, null),
+('L1235', 'Muster 3 GmbH', 'Musterstraße', '2b', '31252', 'DEU', false, null, true, 15000);
 
 INSERT INTO lieferanten_zu_produktstamm(LieferantenID, ProduktID, Menge) VALUES
 ('L1234', '1183', 150.2),
@@ -253,12 +276,11 @@ INSERT INTO lieferantenstamm_zu_materialstamm(LieferantenID, ObergruppeID, Unter
 ('L1234',   84, 1, 12.5);
 
 #Personal hinzufügen
-INSERT INTO personalstamm(personalid, Vorname, nachname, straße, hausnummer,
-                          ort, plz, ländercode, mtag, vorgesetzter, vtag, firmenname) VALUES
-('P123456789', 'Lisa', 'Musterfrau', 'Musterstraße', '74', 'Halalburg', '12345', 'DEU', true, null, false, null),
-('P123456790', 'Marie', 'Musterfrau', 'Musterstraße', '74', 'Haramburg', '12346', 'DEU', true, null, false, null),
-('P123456791', 'Max', 'Mustermann', 'Musterstraße', '74', 'Halalburg', '12345', 'DEU', true, 'P123456790', false, null),
-('P123456792', 'Patrick', 'Benten', 'Musterstraße', '78', 'Eisten', '12345', 'DEU', false, null, true, 'Muster GBR');
+INSERT INTO Personalstamm(Personalid, Vorname, Nachname, Straße, Hausnummer, plz, ländercode, mtag, vorgesetzter, vtag, firmenname) VALUES
+('P123456789', 'Lisa', 'Musterfrau', 'Musterstraße', '74', '65283', 'DEU', true, null, false, null),
+('P123456790', 'Marie', 'Musterfrau', 'Musterstraße', '74', '54122', 'DEU', true, null, false, null),
+('P123456791', 'Max', 'Mustermann', 'Musterstraße', '74', '65283', 'DEU', true, 'P123456790', false, null),
+('P123456792', 'Patrick', 'Benten', 'Musterstraße', '78', '54122', 'DEU', false, null, true, 'Muster GBR');
 
 INSERT INTO personalstamm_buchhaltung (PersonalID, Vollmacht) VALUE
 ('P123456789', 'PPA');

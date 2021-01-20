@@ -7,7 +7,6 @@ CREATE TABLE Lieferantenstamm
     Firmenname      VARCHAR(255),
     Straße          VARCHAR(255),
     Hausnummer      VARCHAR(5),
-    Ort             VARCHAR(255),
     PLZ             CHAR(5),
     Ländercode      VARCHAR(3),
     Exportflag      BOOLEAN,
@@ -17,6 +16,11 @@ CREATE TABLE Lieferantenstamm
 
     PRIMARY KEY (LieferantenID)
 );
+
+ALTER TABLE Lieferantenstamm
+    ADD CONSTRAINT Foreign Key (PLZ) REFERENCES PLZ_Ort (PLZ)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
 
 #### +++++ ####
 

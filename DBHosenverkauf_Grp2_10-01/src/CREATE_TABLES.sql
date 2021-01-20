@@ -104,7 +104,6 @@ CREATE TABLE Kundenstamm_zu_Lieferadressen
     KundenID    Char(10) NOT NULL,
     Straße      VARCHAR(255),
     Hausnummer  VARCHAR(255),
-    Ort         VARCHAR(255),
     PLZ         CHAR(5),
     Laendercode CHAR(3),
 
@@ -118,7 +117,6 @@ CREATE TABLE Lieferantenstamm
     Firmenname      VARCHAR(255),
     Straße          VARCHAR(255),
     Hausnummer      VARCHAR(5),
-    Ort             VARCHAR(255),
     PLZ             CHAR(5),
     Ländercode      VARCHAR(3),
     Exportflag      BOOLEAN,
@@ -166,7 +164,6 @@ CREATE TABLE Personalstamm
     Nachname VARCHAR(255),
     Straße VARCHAR(255),
     Hausnummer VARCHAR(5),
-    Ort VARCHAR(255),
     PLZ CHAR(5),
     Ländercode VARCHAR(3),
     MTag BOOLEAN,
@@ -329,4 +326,12 @@ CREATE TABLE IF NOT EXISTS Telefonnummern
     Telefonnummer       VARCHAR(20),
 
     PRIMARY KEY (TelefonnummerID, Telefonnummer)
+);
+
+CREATE TABLE PLZ_Ort
+(
+    PLZ CHAR(5),
+    Ort VARCHAR(255),
+
+    PRIMARY KEY (PLZ)
 );

@@ -8,7 +8,6 @@ CREATE TABLE Personalstamm
     Nachname VARCHAR(255),
     Straße VARCHAR(255),
     Hausnummer VARCHAR(5),
-    Ort VARCHAR(255),
     PLZ CHAR(5),
     Ländercode VARCHAR(3),
     MTag BOOLEAN,
@@ -20,6 +19,11 @@ CREATE TABLE Personalstamm
 
 ALTER TABLE Personalstamm
     ADD CONSTRAINT FOREIGN KEY (Vorgesetzter) REFERENCES Personalstamm (PersonalID)
+        ON DELETE RESTRICT
+        ON UPDATE CASCADE;
+
+ALTER TABLE Personalstamm
+    ADD CONSTRAINT Foreign Key (PLZ) REFERENCES PLZ_Ort (PLZ)
         ON DELETE RESTRICT
         ON UPDATE CASCADE;
 
